@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import GoogleButton from "react-google-button";
-import GithubButton from "react-github-login-button";
+
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
@@ -12,8 +12,7 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn, signInWithGoogle, signInWithGithub, setLoading } =
-    useContext(AuthContext);
+  const { signIn, signInWithGoogle, setLoading } = useContext(AuthContext);
   //   const navigate = useNavigate();
 
   //   const location = useLocation();
@@ -48,18 +47,6 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     signInWithGoogle()
-      .then(() => {
-        toast.success("Sign In Successful");
-        // navigate(location?.state ? location.state : "/");
-      })
-      .catch(() => {
-        setLoading(false);
-        toast.error("An Unknown Error Occurred!");
-      });
-  };
-
-  const handleGithubLogin = () => {
-    signInWithGithub()
       .then(() => {
         toast.success("Sign In Successful");
         // navigate(location?.state ? location.state : "/");
@@ -155,7 +142,6 @@ const Login = () => {
           <div className="flex flex-col gap-4 justify-center  items-center mb-5">
             {" "}
             <GoogleButton onClick={handleGoogleLogin} />
-            <GithubButton onClick={handleGithubLogin} />
           </div>
           <p className="text-center mb-4 text-lg">
             Don't have any account?{" "}
