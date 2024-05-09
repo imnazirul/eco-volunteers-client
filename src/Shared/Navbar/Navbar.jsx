@@ -28,22 +28,22 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <span className="hover:text-[#3843D2] ">
+      <span className="hover:text-[#3d52a0] ">
         <NavLink className="px-4 py-2 rounded-lg" to="/">
           Home
         </NavLink>
       </span>{" "}
-      <span className="hover:text-[#3843D2]">
+      <span className="hover:text-[#3d52a0]">
         <NavLink className="px-4 py-2 rounded-lg" to="/need_volunteer">
           Need Volunteer
         </NavLink>
       </span>
-      <span className="hover:text-[#3843D2]">
+      <span className="hover:text-[#3d52a0]">
         <NavLink className="px-4 py-2 rounded-lg" to="/login">
           Login
         </NavLink>
       </span>
-      <span className="hover:text-[#3843D2]">
+      <span className="hover:text-[#3d52a0]">
         <NavLink className="px-4 py-2 rounded-lg" to="/register">
           Register
         </NavLink>
@@ -88,7 +88,7 @@ const Navbar = () => {
         </div>
         <Link
           to="/"
-          className="text-xl md:text-2xl btn-ghost font-jost flex gap-0 lg:text-2xl font-bold text-[#40008B]"
+          className="text-xl md:text-2xl btn-ghost font-jost flex gap-0 lg:text-2xl font-bold text-secondary-1"
         >
           <div className="flex md:ml-2 md:gap-1 items-center">
             Serve Together
@@ -162,7 +162,7 @@ const Navbar = () => {
                   </div>
                 </div>
                 <Tooltip
-                  style={{ backgroundColor: "#3843D2", borderRadius: "10px" }}
+                  style={{ backgroundColor: "#3d52a0", borderRadius: "10px" }}
                   className="z-50 "
                   id="my-tooltip"
                   place="left"
@@ -186,7 +186,7 @@ const Navbar = () => {
         )} */}
         <Link
           to="/login"
-          className="max-sm:btn-sm bg-green-1000 btn bg-primary-1 text-[#FCFCFC] font-bold flex items-center gap-1 hover:bg-primary-1"
+          className="max-sm:btn-sm bg-green-1000 btn bg-secondary-1 text-[#FCFCFC] font-bold flex items-center gap-1 hover:bg-primary-1"
         >
           <FiLogIn></FiLogIn>Sign In
         </Link>

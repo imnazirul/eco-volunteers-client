@@ -7,7 +7,7 @@ const Root = () => {
     <>
       <div className="overflow-x-hidden">
         <div className="space-y-5 lg:space-y-10">
-          <div className="container mx-auto font-roboto px-5 lg:px-10 ">
+          <div className="container mx-auto font-poppins px-5 lg:px-10 ">
             <Navbar></Navbar>
             <Outlet></Outlet>
           </div>
