@@ -1,14 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import "./Navbar.css";
-// import Logo from "./../../assets/logo.png";
+
 import { useEffect, useState } from "react";
-// import { AuthContext } from "../../AuthProvider/AuthProvider";
-// import { Tooltip } from "react-tooltip";
-// import toast from "react-hot-toast";
+
+import toast from "react-hot-toast";
+import useAuth from "../../CustomHooks/useAuth";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
-  //   const { user, loading, logOut } = useContext(AuthContext);
+  const { user, loading, logOut } = useAuth();
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -38,26 +39,31 @@ const Navbar = () => {
           Need Volunteer
         </NavLink>
       </span>
-      <span className="hover:text-[#3d52a0]">
-        <NavLink className="px-4 py-2 rounded-lg" to="/login">
-          Login
-        </NavLink>
-      </span>
-      <span className="hover:text-[#3d52a0]">
-        <NavLink className="px-4 py-2 rounded-lg" to="/register">
-          Register
-        </NavLink>
-      </span>{" "}
+      {!user && (
+        <>
+          {" "}
+          <span className="hover:text-[#3d52a0]">
+            <NavLink className="px-4 py-2 rounded-lg" to="/login">
+              Login
+            </NavLink>
+          </span>
+          <span className="hover:text-[#3d52a0]">
+            <NavLink className="px-4 py-2 rounded-lg" to="/register">
+              Register
+            </NavLink>
+          </span>{" "}
+        </>
+      )}
     </>
   );
 
-  //   const handleSignOut = () => {
-  //     logOut()
-  //       .then(() => {
-  //         toast.success("Log Out Successfully");
-  //       })
-  //       .catch((err) => console.log(err));
-  //   };
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Log Out Successfully");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="navbar bg-base-100 font-poppins justify-between">
@@ -138,7 +144,7 @@ const Navbar = () => {
       </label>
       <div className="navbar-end flex md:gap-5 items-center">
         {" "}
-        {/* {loading ? (
+        {loading ? (
           <>
             <span className="loading loading-spinner loading-md"></span>
           </>
@@ -183,13 +189,7 @@ const Navbar = () => {
           >
             <FiLogIn></FiLogIn>Sign In
           </Link>
-        )} */}
-        <Link
-          to="/login"
-          className="max-sm:btn-sm bg-green-1000 btn bg-secondary-1 text-[#FCFCFC] font-bold flex items-center gap-1 hover:bg-primary-1"
-        >
-          <FiLogIn></FiLogIn>Sign In
-        </Link>
+        )}
       </div>
     </div>
   );

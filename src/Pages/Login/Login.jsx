@@ -14,9 +14,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn, signInWithGoogle, signInWithGithub, setLoading } =
     useContext(AuthContext);
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
 
-  const location = useLocation();
+  //   const location = useLocation();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -34,7 +34,7 @@ const Login = () => {
     signIn(email, password)
       .then(() => {
         toast.success("Sign In Successful");
-        navigate(location?.state ? location.state : "/");
+        // navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
         setLoading(false);
@@ -50,7 +50,7 @@ const Login = () => {
     signInWithGoogle()
       .then(() => {
         toast.success("Sign In Successful");
-        navigate(location?.state ? location.state : "/");
+        // navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
         setLoading(false);
@@ -62,7 +62,7 @@ const Login = () => {
     signInWithGithub()
       .then(() => {
         toast.success("Sign In Successful");
-        navigate(location?.state ? location.state : "/");
+        // navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
         setLoading(false);
@@ -159,7 +159,7 @@ const Login = () => {
           </div>
           <p className="text-center mb-4 text-lg">
             Don't have any account?{" "}
-            <Link to="/register" className="link text-primary-1 pb-2">
+            <Link to="/register" className="link text-secondary-1 pb-2">
               Sign Up
             </Link>
           </p>

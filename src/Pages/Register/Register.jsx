@@ -3,14 +3,14 @@ import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useState } from "react";
 import toast from "react-hot-toast";
+import useAuth from "../../CustomHooks/useAuth";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { createUser, updateRegisterProfile, setReload, reload, setLoading } =
-    useContext(AuthContext);
+    useAuth();
 
   const navigate = useNavigate();
 
@@ -194,7 +194,7 @@ const Register = () => {
           </form>
           <p className="text-center pb-5 text-lg">
             Already have an account? Please{" "}
-            <Link to="/login" className="link text-primary-1">
+            <Link to="/login" className="link text-secondary-1">
               Sign In
             </Link>
           </p>
