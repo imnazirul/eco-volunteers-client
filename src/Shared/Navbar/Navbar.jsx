@@ -39,6 +39,31 @@ const Navbar = () => {
           Need Volunteer
         </NavLink>
       </span>
+      {user && (
+        <>
+          {" "}
+          <div className="dropdown dropdown-bottom">
+            <div
+              tabIndex={0}
+              role="button"
+              className="  cursor-pointer hover:text-[#3d52a0]"
+            >
+              My Profile
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-50 menu p-3 shadow bg-base-100 rounded-box w-52 font-semibold border space-y-2"
+            >
+              <li>
+                <Link>Add Volunteer Post</Link>
+              </li>
+              <li>
+                <Link>Manage My Post</Link>
+              </li>
+            </ul>
+          </div>
+        </>
+      )}
       {!user && (
         <>
           {" "}
