@@ -27,11 +27,11 @@ const VolunteerCard = ({ job }) => {
             {category}
           </span>
           <h2 className="card-title">{post_title}</h2>
-          <p>Deadline: {deadline}</p>
+          <p className="text-lg font-medium">Deadline: {deadline}</p>
           {/* <p>{description}</p> */}
           <hr className="bg-primary-1" />
           <div className="card-actions">
-            <button className="btn bg-primary-1 text-white hover:bg-primary-1 self-center">
+            <button className="btn bg-secondary-1 text-white hover:bg-secondary-1 self-center">
               View Details
             </button>
           </div>

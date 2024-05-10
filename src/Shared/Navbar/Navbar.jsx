@@ -55,10 +55,10 @@ const Navbar = () => {
               className="dropdown-content z-50 menu p-3 shadow bg-base-100 rounded-box w-52 font-semibold border space-y-2"
             >
               <li>
-                <Link>Add Volunteer Post</Link>
+                <Link to="/add_volunteer_post">Add Volunteer Post</Link>
               </li>
               <li>
-                <Link>Manage My Post</Link>
+                <Link to="/manage_post">Manage My Post</Link>
               </li>
             </ul>
           </div>
@@ -202,7 +202,7 @@ const Navbar = () => {
             </a>
             <button
               onClick={handleSignOut}
-              className="max-sm:btn-sm bg-green-1000 btn bg-primary-1 text-[#FCFCFC] font-bold hover:bg-primary-1"
+              className="max-sm:btn-sm bg-green-1000 btn bg-secondary-1 text-[#FCFCFC] font-bold hover:bg-secondary-1"
             >
               Sign Out
             </button>
@@ -210,7 +210,7 @@ const Navbar = () => {
         ) : (
           <Link
             to="/login"
-            className="max-sm:btn-sm bg-green-1000 btn bg-primary-1 text-[#FCFCFC] font-bold flex items-center gap-1 hover:bg-primary-1"
+            className="max-sm:btn-sm bg-green-1000 btn bg-secondary-1 text-[#FCFCFC] font-bold flex items-center gap-1 hover:bg-secondary-1"
           >
             <FiLogIn></FiLogIn>Sign In
           </Link>
