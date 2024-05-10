@@ -31,9 +31,12 @@ const VolunteerCard = ({ job }) => {
           {/* <p>{description}</p> */}
           <hr className="bg-primary-1" />
           <div className="card-actions">
-            <button className="btn bg-secondary-1 text-white hover:bg-secondary-1 self-center">
-              View Details
-            </button>
+            <Link to="/volunteer_need_details">
+              {" "}
+              <button className="btn bg-secondary-1 text-white hover:bg-secondary-1 self-center">
+                View Details
+              </button>
+            </Link>
           </div>
         </div>
       </div>
