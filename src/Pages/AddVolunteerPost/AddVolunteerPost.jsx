@@ -223,7 +223,7 @@ const AddVolunteerPost = () => {
           ></textarea>
         </div>
 
-        <button className="btn bg-secondary-1 hover:bg-secondary-1 text-white font-poppins text-lg md:col-span-2">
+        <button className="btn w-64 max-w-64 rounded-3xl border-none mx-auto  bg-primary-1 hover:bg-secondary-1 text-white font-poppins text-lg md:col-span-2">
           Add Post
         </button>
       </form>

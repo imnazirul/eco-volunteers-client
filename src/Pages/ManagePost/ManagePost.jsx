@@ -65,6 +65,10 @@ const ManagePost = () => {
     setValue(newValue);
   };
 
+  const handleDeletePost = () => {
+    console.log("delete clicked");
+  };
+
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -104,7 +108,7 @@ const ManagePost = () => {
                 {postsData.map((post) => (
                   <tr
                     key={post._id}
-                    className="text-center bg-base-100 border-b border-gray-700"
+                    className="text-center bg-base-100 border-b border-gray-300"
                   >
                     <td
                       scope="row"
@@ -121,7 +125,10 @@ const ManagePost = () => {
                           Update
                         </button>
                       </Link>
-                      <button className="btn btn-sm font-medium text-red-500 ">
+                      <button
+                        onClick={handleDeletePost}
+                        className="btn btn-sm font-medium text-red-500 "
+                      >
                         Delete
                       </button>
                     </td>

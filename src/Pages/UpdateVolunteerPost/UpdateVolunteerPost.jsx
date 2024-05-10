@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAuth from "../../CustomHooks/useAuth";
+import Swal from "sweetalert2";
 
 const UpdateVolunteerPost = () => {
   const [categoryErr, setCategoryErr] = useState("");
   const { id } = useParams();
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState();
 
@@ -51,13 +55,61 @@ const UpdateVolunteerPost = () => {
     }
   };
 
+  const handleUpdatePost = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const post_title = form.post_title.value;
+    const category = document.getElementById("dropdown").value;
+    const location = form.location.value;
+    const thumbnail = form.thumbnail.value;
+    const volunteers_needed = form.volunteers_needed.value;
+    const deadline = startDate.toDateString();
+    const organizer_name = user?.displayName;
+    const organizer_email = user?.email;
+    const description = form.description.value;
+    const long_description = form.long_description.value;
+
+    if (category === "Select Category Name") {
+      setCategoryErr("Select Category Name !");
+      return;
+    }
+    const updatedPost = {
+      post_title,
+      category,
+      location,
+      thumbnail,
+      volunteers_needed,
+      deadline,
+      organizer_email,
+      organizer_name,
+      description,
+      long_description,
+    };
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showCancelButton: true,
+      confirmButtonText: "Save",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        axiosSecure
+          .put(`/volunteerposts?update=${id}`, updatedPost)
+          .then((res) => {
+            if (res.data.modifiedCount > 0) {
+              Swal.fire("Saved!", "", "success");
+            }
+          });
+      }
+    });
+  };
+
   return (
-    <div className="p-6 container font-poppins bg-[#3c63c5] mx-auto rounded-lg">
+    <div className="p-6 container font-poppins bg-[#0b2d81] mx-auto rounded-lg">
       <h1 className="text-2xl lg:text-4xl text-center font-bold mb-5 font-poppins text-white">
         Update Volunteer Post
       </h1>
       <form
-        // onSubmit={handleAddPost}
+        onSubmit={handleUpdatePost}
         className=" grid grid-cols-1 md:grid-cols-2 mx-auto gap-4 md:gap-8"
       >
         <div>
@@ -210,8 +262,8 @@ const UpdateVolunteerPost = () => {
           ></textarea>
         </div>
 
-        <button className="btn bg-secondary-1 hover:bg-secondary-1 text-white font-poppins text-lg md:col-span-2">
-          Add Post
+        <button className="btn w-64 max-w-64 rounded-3xl border-none mx-auto bg-secondary-1 hover:bg-secondary-1 text-white font-poppins text-lg md:col-span-2">
+          Update Post
         </button>
       </form>
     </div>
