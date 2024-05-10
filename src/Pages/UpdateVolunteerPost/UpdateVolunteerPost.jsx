@@ -89,6 +89,8 @@ const UpdateVolunteerPost = () => {
       title: "Do you want to save the changes?",
       showCancelButton: true,
       confirmButtonText: "Save",
+      cancelButtonColor: "#7091e6",
+      confirmButtonColor: "#3d52a0",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
@@ -96,7 +98,12 @@ const UpdateVolunteerPost = () => {
           .put(`/volunteerposts?update=${id}`, updatedPost)
           .then((res) => {
             if (res.data.modifiedCount > 0) {
-              Swal.fire("Saved!", "", "success");
+              Swal.fire({
+                icon: "success",
+                title: "Your Changes has been saved",
+                showConfirmButton: true,
+                confirmButtonColor: "#3d52a0",
+              });
             }
           });
       }

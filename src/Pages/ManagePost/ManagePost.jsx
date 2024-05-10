@@ -9,29 +9,80 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const ManagePost = () => {
   const [value, setValue] = React.useState(0);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const [volunteerData, setVolunteerData] = useState([]);
 
   const { data: postsData = [], isPending } = useQuery({
     queryKey: ["vPostsData"],
     queryFn: () => {
       return axiosSecure
         .get(`/volunteerposts?email=${user?.email}`)
-        .then((res) => res.data);
+        .then((res) => {
+          setVolunteerData(res.data);
+          return res.data;
+        });
     },
   });
 
   if (isPending) {
     return (
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
+      <>
+        <div className="w-1/3 flex gap-2 my-5">
+          <div className="skeleton h-8 w-full"></div>
+          <div className="skeleton h-8 w-full"></div>
+        </div>
+        <div className="flex flex-col gap-5">
+          {" "}
+          <div className="flex gap-4 w-full">
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+          </div>
+          <div className="flex gap-4 w-full">
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+          </div>
+          <div className="flex gap-4 w-full">
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+          </div>
+          <div className="flex gap-4 w-full">
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+          </div>
+          <div className="flex gap-4 w-full">
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+          </div>
+          <div className="flex gap-4 w-full">
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+            <div className="skeleton h-8 w-full"></div>
+          </div>
+        </div>
+      </>
     );
   }
   function CustomTabPanel(props) {
@@ -65,8 +116,30 @@ const ManagePost = () => {
     setValue(newValue);
   };
 
-  const handleDeletePost = () => {
-    console.log("delete clicked");
+  const handleDeletePost = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#7091e6",
+      cancelButtonColor: "#3d52a0",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/volunteerposts?deleteid=${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            const remaining = volunteerData.filter((data) => data._id !== id);
+            setVolunteerData(remaining);
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
   };
 
   return (
@@ -105,7 +178,7 @@ const ManagePost = () => {
                 </tr>
               </thead>
               <tbody>
-                {postsData.map((post) => (
+                {volunteerData.map((post) => (
                   <tr
                     key={post._id}
                     className="text-center bg-base-100 border-b border-gray-300"
@@ -126,7 +199,9 @@ const ManagePost = () => {
                         </button>
                       </Link>
                       <button
-                        onClick={handleDeletePost}
+                        onClick={() => {
+                          handleDeletePost(post?._id);
+                        }}
                         className="btn btn-sm font-medium text-red-500 "
                       >
                         Delete
