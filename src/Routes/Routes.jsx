@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         element: <NeedVolunteer></NeedVolunteer>,
       },
       {
-        path: "/volunteer_need_details",
+        path: "/volunteer_need_details/:id",
         element: (
           <PrivateRoute>
             <VolunteerNeedDetails></VolunteerNeedDetails>

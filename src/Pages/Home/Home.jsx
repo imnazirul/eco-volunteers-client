@@ -1,21 +1,24 @@
 import { Fade } from "react-awesome-reveal";
 import BannerSlider from "./BannerSlider";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import VolunteerCard from "./VolunteerCard";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 
 const Home = () => {
-  const [volunteerJob, setVolunteerJob] = useState([]);
-
-  useEffect(() => {
-    axios.get("/fakedata.json").then((res) => setVolunteerJob(res.data));
-  }, []);
-
-  if (volunteerJob.length > 6) {
-    const slicedJobs = volunteerJob.slice(0, 6);
-    setVolunteerJob(slicedJobs);
-  }
+  const axiosSecure = useAxiosSecure();
+  const {
+    data: volunteerJobs = [],
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ["vCard"],
+    queryFn: () => {
+      return axiosSecure
+        .get(`/volunteerposts?limit=${6}`)
+        .then((res) => res.data);
+    },
+  });
 
   return (
     <div>
@@ -36,10 +39,72 @@ const Home = () => {
             </p>
           </Fade>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-3 lg:gap-6">
-          {volunteerJob.map((job, index) => (
-            <VolunteerCard key={index} job={job}></VolunteerCard>
-          ))}
+        <div>
+          {isError && (
+            <div className="max-w-96 mx-auto text-center">
+              {" "}
+              <h1 className="text-3xl">Data Not Found!</h1>
+              <h3 className="text-xl">Refresh The Page or Try Again Later</h3>
+            </div>
+          )}
+          {isPending ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-5 lg:gap-10">
+              <div className="flex flex-col gap-3 md:gap-6 border p-5 rounded-xl">
+                <div className="skeleton h-60 w-full"></div>
+                <div className="skeleton h-4 w-28"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <hr className="" />
+                <div className="skeleton h-8 w-20"></div>
+              </div>
+              <div className="flex flex-col gap-3 md:gap-6 border p-5 rounded-xl">
+                <div className="skeleton h-60 w-full"></div>
+                <div className="skeleton h-4 w-28"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <hr className="" />
+                <div className="skeleton h-8 w-20"></div>
+              </div>
+              <div className="flex flex-col gap-3 md:gap-6 border p-5 rounded-xl">
+                <div className="skeleton h-60 w-full"></div>
+                <div className="skeleton h-4 w-28"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <hr className="" />
+                <div className="skeleton h-8 w-20"></div>
+              </div>
+              <div className="flex flex-col gap-3 md:gap-6 border p-5 rounded-xl">
+                <div className="skeleton h-60 w-full"></div>
+                <div className="skeleton h-4 w-28"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <hr className="" />
+                <div className="skeleton h-8 w-20"></div>
+              </div>
+              <div className="flex flex-col gap-3 md:gap-6 border p-5 rounded-xl">
+                <div className="skeleton h-60 w-full"></div>
+                <div className="skeleton h-4 w-28"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <hr className="" />
+                <div className="skeleton h-8 w-20"></div>
+              </div>
+              <div className="flex flex-col gap-3 md:gap-6 border p-5 rounded-xl">
+                <div className="skeleton h-60 w-full"></div>
+                <div className="skeleton h-4 w-28"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <div className="skeleton h-4 w-full"></div>
+                <hr className="" />
+                <div className="skeleton h-8 w-20"></div>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-3 lg:gap-6">
+              {volunteerJobs.map((job, index) => (
+                <VolunteerCard key={index} job={job}></VolunteerCard>
+              ))}
+            </div>
+          )}
         </div>
         <Link to="/need_volunteer">
           <button className="my-5 btn text-lg text-secondary-1 mx-auto flex justify-center">

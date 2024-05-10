@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const VolunteerCard = ({ job }) => {
   const {
+    _id,
     thumbnail,
     post_title,
     description,
@@ -31,7 +32,7 @@ const VolunteerCard = ({ job }) => {
           {/* <p>{description}</p> */}
           <hr className="bg-primary-1" />
           <div className="card-actions">
-            <Link to="/volunteer_need_details">
+            <Link to={`/volunteer_need_details/${_id}`}>
               {" "}
               <button className="btn bg-secondary-1 text-white hover:bg-secondary-1 self-center">
                 View Details
