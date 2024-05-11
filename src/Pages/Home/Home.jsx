@@ -4,6 +4,7 @@ import VolunteerCard from "./VolunteerCard";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
+import JoinTeam from "./JoinTeam";
 
 const Home = () => {
   const axiosSecure = useAxiosSecure();
@@ -111,6 +112,17 @@ const Home = () => {
             See All
           </button>
         </Link>
+
+        <div>
+          <div className="mt-5 lg:mt-10 mb-5 lg:mb-10">
+            <Fade fraction={0} direction="down" triggerOnce={true}>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold font-poppins">
+                Join Our Team
+              </h1>
+            </Fade>
+          </div>
+          <JoinTeam></JoinTeam>
+        </div>
       </div>
     </div>
   );
