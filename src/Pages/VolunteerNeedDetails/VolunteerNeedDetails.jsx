@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const VolunteerNeedDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -54,6 +55,9 @@ const VolunteerNeedDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Details -Volunteer Post | ECO Volunteers</title>
+      </Helmet>
       <section className="bg-base-300">
         <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
           <a
@@ -102,7 +106,7 @@ const VolunteerNeedDetails = () => {
               <p>{description}</p>
               <Link to={`/be_a_volunteer/${_id}`}>
                 {" "}
-                <button className=" btn px-10 hover:bg-primary-1 text-lg font-medium rounded-3xl bg-secondary-1 text-white">
+                <button className="mt-3 btn px-10 hover:bg-primary-1 text-lg font-medium rounded-3xl bg-secondary-1 text-white">
                   Be a Volunteer
                 </button>
               </Link>

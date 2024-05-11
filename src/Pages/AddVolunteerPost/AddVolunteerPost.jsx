@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../CustomHooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const AddVolunteerPost = () => {
   const [categoryErr, setCategoryErr] = useState("");
@@ -69,6 +70,9 @@ const AddVolunteerPost = () => {
   };
   return (
     <div className="p-6 container font-poppins bg-[#3c63c5] mx-auto rounded-lg">
+      <Helmet>
+        <title>Add Volunteer Post | ECO Volunteers</title>
+      </Helmet>
       <h1 className="text-2xl lg:text-4xl text-center font-bold mb-5 font-poppins text-white">
         Add Volunteer Post
       </h1>

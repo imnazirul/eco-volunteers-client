@@ -52,7 +52,7 @@ const Register = () => {
   return (
     <div className="mb-5 lg:mb-10 lg:bg-base-200 rounded-xl">
       <Helmet>
-        <title>Sign Up | Royal Explore</title>
+        <title>Sign Up | ECO Volunteers</title>
       </Helmet>
 
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-jost font-bold text-center pt-5 lg:pt-10 text-btn-1 ">

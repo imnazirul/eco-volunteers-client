@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import JoinTeam from "./JoinTeam";
-import { useEffect, useState } from "react";
-import NewsCard from "./NewsCard";
+
 import WhyUs from "./WhyUs";
+import NewsAndUpdates from "./NewsAndUpdates";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const axiosSecure = useAxiosSecure();
-  const [newsData, setNewsData] = useState([]);
+
   const {
     data: volunteerJobs = [],
     isPending,
@@ -21,19 +22,16 @@ const Home = () => {
     queryKey: ["vCard"],
     queryFn: () => {
       return axiosSecure
-        .get(`/volunteerposts?limit=${6}`)
+        .get(`/volunteerposts?limit=${6}&sort=${"deadline"}`)
         .then((res) => res.data);
     },
   });
 
-  useEffect(() => {
-    fetch("/fakedata2.json")
-      .then((res) => res.json())
-      .then((data) => setNewsData(data));
-  }, []);
-
   return (
     <div>
+      <Helmet>
+        <title>Home | ECO Volunteers</title>
+      </Helmet>
       <BannerSlider></BannerSlider>
 
       <div>
@@ -138,11 +136,7 @@ const Home = () => {
             </p>
           </Fade>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-3 lg:gap-6">
-            {newsData.map((data) => (
-              <NewsCard key={data._id} data={data}></NewsCard>
-            ))}
-          </div>
+          <NewsAndUpdates></NewsAndUpdates>
         </div>
 
         <div className="mt-5 lg:mt-10 mb-5 lg:mb-10">

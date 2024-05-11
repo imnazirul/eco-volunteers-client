@@ -6,7 +6,7 @@ const ErrorEl = () => {
   return (
     <div className="text-black h-screen items-center flex justify-center gap-5 flex-col bg-gray-50 ">
       <Helmet>
-        <title>Error | Royal Explore</title>
+        <title>Error | ECO Volunteers</title>
       </Helmet>
       <section className="flex flex-col w-full justify-center items-center text-gray-800">
         <svg

@@ -11,80 +11,15 @@ import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import MyNeedPosts from "./MyNeedPosts";
+import MyRequestedPosts from "./MyRequestedPosts";
+import { Helmet } from "react-helmet-async";
 
 const ManagePost = () => {
   const [value, setValue] = React.useState(0);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [volunteerData, setVolunteerData] = useState([]);
 
-  const { data: postsData = [], isPending } = useQuery({
-    queryKey: ["vPostsData"],
-    queryFn: () => {
-      return axiosSecure
-        .get(`/volunteerposts?email=${user?.email}`)
-        .then((res) => {
-          setVolunteerData(res.data);
-          return res.data;
-        });
-    },
-  });
-
-  if (isPending) {
-    return (
-      <>
-        <div className="w-1/3 flex gap-2 my-5">
-          <div className="skeleton h-8 w-full"></div>
-          <div className="skeleton h-8 w-full"></div>
-        </div>
-        <div className="flex flex-col gap-5">
-          {" "}
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-        </div>
-      </>
-    );
-  }
   function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -116,34 +51,11 @@ const ManagePost = () => {
     setValue(newValue);
   };
 
-  const handleDeletePost = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#7091e6",
-      cancelButtonColor: "#3d52a0",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure.delete(`/volunteerposts?deleteid=${id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
-            const remaining = volunteerData.filter((data) => data._id !== id);
-            setVolunteerData(remaining);
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-          }
-        });
-      }
-    });
-  };
-
   return (
     <>
+      <Helmet>
+        <title>Manage My Post | ECO Volunteers</title>
+      </Helmet>
       <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -156,65 +68,12 @@ const ManagePost = () => {
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full  text-left rtl:text-right  ">
-              <thead className="  uppercase bg-base-300 ">
-                <tr className="text-center text-[15px]">
-                  <th scope="col" className="px-6 py-3">
-                    Post Title
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Deadline
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Category
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Volunteer Needed
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {volunteerData.map((post) => (
-                  <tr
-                    key={post._id}
-                    className="text-center bg-base-100 border-b border-gray-300"
-                  >
-                    <td
-                      scope="row"
-                      className="px-6 py-4 font-medium  whitespace-nowrap "
-                    >
-                      {post?.post_title}
-                    </td>
-                    <td className="px-6 py-4">{post?.deadline}</td>
-                    <td className="px-6 py-4">{post?.category}</td>
-                    <td className="px-6 py-4">{post?.volunteers_needed}</td>
-                    <td className="px-6 py-4 flex gap-3 justify-center">
-                      <Link to={`/update_post/${post?._id}`}>
-                        <button className="btn btn-sm font-medium text-blue-500 ">
-                          Update
-                        </button>
-                      </Link>
-                      <button
-                        onClick={() => {
-                          handleDeletePost(post?._id);
-                        }}
-                        className="btn btn-sm font-medium text-red-500 "
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <MyNeedPosts></MyNeedPosts>
         </CustomTabPanel>
+
+        {/* requested panel */}
         <CustomTabPanel value={value} index={1}>
-          Item Two
+          <MyRequestedPosts></MyRequestedPosts>
         </CustomTabPanel>
       </Box>
     </>

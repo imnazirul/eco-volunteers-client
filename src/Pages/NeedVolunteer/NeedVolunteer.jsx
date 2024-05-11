@@ -6,6 +6,7 @@ import VolunteerCard from "../Home/VolunteerCard";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const NeedVolunteer = () => {
   const [volunteerPosts, setVolunteerPosts] = useState([]);
@@ -42,6 +43,9 @@ const NeedVolunteer = () => {
   if (isPending) {
     return (
       <>
+        <Helmet>
+          <title>Need Volunteer Posts | ECO Volunteers</title>
+        </Helmet>
         <form className="max-w-md mx-auto my-5">
           <label
             htmlFor="default-search"

@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../CustomHooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UpdateVolunteerPost = () => {
   const [categoryErr, setCategoryErr] = useState("");
@@ -62,7 +63,7 @@ const UpdateVolunteerPost = () => {
     const category = document.getElementById("dropdown").value;
     const location = form.location.value;
     const thumbnail = form.thumbnail.value;
-    const volunteers_needed = form.volunteers_needed.value;
+    const volunteers_needed = parseInt(form.volunteers_needed.value);
     const deadline = startDate.toDateString();
     const organizer_name = user?.displayName;
     const organizer_email = user?.email;
@@ -112,6 +113,9 @@ const UpdateVolunteerPost = () => {
 
   return (
     <div className="p-6 container font-poppins bg-[#0b2d81] mx-auto rounded-lg">
+      <Helmet>
+        <title>Update Volunteer Post | ECO Volunteers</title>
+      </Helmet>
       <h1 className="text-2xl lg:text-4xl text-center font-bold mb-5 font-poppins text-white">
         Update Volunteer Post
       </h1>

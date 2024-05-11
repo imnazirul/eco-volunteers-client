@@ -4,11 +4,15 @@ import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import useAuth from "../../CustomHooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 const BeAVolunteer = () => {
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const { user } = useAuth();
+  const [neededVolunteers, setNeededVolunteers] = useState();
 
   const {
     data: singleData,
@@ -17,7 +21,10 @@ const BeAVolunteer = () => {
   } = useQuery({
     queryKey: ["singleJob"],
     queryFn: () => {
-      return axiosSecure.get(`/singlevpost/${id}`).then((res) => res.data);
+      return axiosSecure.get(`/singlevpost/${id}`).then((res) => {
+        setNeededVolunteers(res.data?.volunteers_needed);
+        return res.data;
+      });
     },
   });
 
@@ -58,16 +65,33 @@ const BeAVolunteer = () => {
 
   const handleRequest = (e, id) => {
     e.preventDefault();
+
     let suggestion = document.getElementById("suggestion").value;
-    const volunteer = {
+    const volunteerRequest = {
       volunteer_email: user?.email,
       volunteer_name: user?.displayName,
       suggestion: suggestion,
+      thumbnail,
+      post_title,
+      description,
+      long_description,
+      category,
+      location,
+      volunteers_needed,
+      deadline,
+      organizer_name,
+      organizer_email,
     };
+
+    if (neededVolunteers <= 0) {
+      return toast.error("All Volunteers Need Has Been FullFilled!");
+    }
     axiosSecure
-      .post(`/updatevolunteerneeded?id=${id}`, volunteer)
+      .post(`/updatevolunteerneeded?id=${id}`, volunteerRequest)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
+          const remainingNeed = neededVolunteers - 1;
+          setNeededVolunteers(remainingNeed);
           Swal.fire({
             title: "Requested Successfully",
             showConfirmButton: true,
@@ -81,6 +105,9 @@ const BeAVolunteer = () => {
 
   return (
     <div className="bg-secondary-1 p-5 rounded-xl">
+      <Helmet>
+        <title>Be A Volunteer | ECO Volunteers</title>
+      </Helmet>
       <h1 className="text-3xl text-center text-white underline font-semibold flex-1">
         Be A Volunteer
       </h1>
@@ -134,7 +161,7 @@ const BeAVolunteer = () => {
           </label>
           <input
             readOnly
-            defaultValue={volunteers_needed}
+            defaultValue={neededVolunteers}
             className="w-full rounded-md input"
           />
         </div>

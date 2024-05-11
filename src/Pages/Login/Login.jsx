@@ -13,9 +13,9 @@ import toast from "react-hot-toast";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn, signInWithGoogle, setLoading } = useContext(AuthContext);
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  //   const location = useLocation();
+  const location = useLocation();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -33,7 +33,7 @@ const Login = () => {
     signIn(email, password)
       .then(() => {
         toast.success("Sign In Successful");
-        // navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
         setLoading(false);
@@ -60,7 +60,7 @@ const Login = () => {
   return (
     <div className="mb-5 lg:mb-10 lg:bg-base-200 rounded-xl ">
       <Helmet>
-        <title>Sign In | Royal Explore</title>
+        <title>Sign In | ECO Volunteers</title>
       </Helmet>
 
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-jost font-bold text-center pt-5 lg:pt-10 text-btn-1">

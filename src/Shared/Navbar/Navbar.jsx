@@ -122,7 +122,7 @@ const Navbar = () => {
           className="text-xl md:text-2xl btn-ghost font-jost flex gap-0 lg:text-2xl font-bold text-secondary-1"
         >
           <div className="flex md:ml-2 md:gap-1 items-center">
-            Serve Together
+            ECO Volunteers
           </div>
         </Link>
       </div>
