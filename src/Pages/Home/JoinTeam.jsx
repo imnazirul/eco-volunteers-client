@@ -1,19 +1,21 @@
+/* eslint-disable react/no-unescaped-entities */
 const JoinTeam = () => {
   return (
-    <div className="flex gap-5">
-      <div className="space-y-3">
-        <h1 className="text-4xl font-semibold mb-5">
-          Join us and make the <br />
-          <span className="text-primary-1">world cleaner </span>
+    <div className="flex gap-8 items-center">
+      <div className="space-y-3 max-w-2xl">
+        <h1 className="text-4xl font-semibold mb-10 max-w-xl">
+          Join us and make the
+          <span className="text-primary-1"> world cleaner </span>
           and better with our team
         </h1>
-        <p className="text-lg">
-          Everyday we put major efforts to collect garbage from the streets,
-          recycle materials and promote the ideas of ecology and eco-friendly
-          materials.
+        <p className="text-xl">
+          Join us in our mission to make the world cleaner and better! Become a
+          vital part of our team and contribute to positive change. Together, we
+          can make a lasting impact on the environment and communities. Join
+          hands with us and be a force for good.
         </p>
       </div>
-      <div className="flex gap-4">
+      <div className="flex flex-col gap-4">
         <div className="space-y-3 bg-base-200 rounded-xl p-5">
           <img src="https://i.ibb.co/RH7r9Vp/mt-1926-home-icon-1.png" alt="" />
           <h3 className="text-2xl font-semibold text-secondary-1">

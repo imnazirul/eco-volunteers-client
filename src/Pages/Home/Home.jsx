@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Fade } from "react-awesome-reveal";
 import BannerSlider from "./BannerSlider";
 import VolunteerCard from "./VolunteerCard";
@@ -5,9 +6,13 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import JoinTeam from "./JoinTeam";
+import { useEffect, useState } from "react";
+import NewsCard from "./NewsCard";
+import WhyUs from "./WhyUs";
 
 const Home = () => {
   const axiosSecure = useAxiosSecure();
+  const [newsData, setNewsData] = useState([]);
   const {
     data: volunteerJobs = [],
     isPending,
@@ -20,6 +25,12 @@ const Home = () => {
         .then((res) => res.data);
     },
   });
+
+  useEffect(() => {
+    fetch("/fakedata2.json")
+      .then((res) => res.json())
+      .then((data) => setNewsData(data));
+  }, []);
 
   return (
     <div>
@@ -113,14 +124,43 @@ const Home = () => {
           </button>
         </Link>
 
-        <div>
-          <div className="mt-5 lg:mt-10 mb-5 lg:mb-10">
-            <Fade fraction={0} direction="down" triggerOnce={true}>
-              <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold font-poppins">
-                Join Our Team
-              </h1>
-            </Fade>
+        <div className="mt-5 lg:mt-14 mb-5 lg:mb-10">
+          <Fade fraction={0} direction="down" triggerOnce={true}>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold font-poppins">
+              Discover Our Updates & News Content
+            </h1>
+          </Fade>
+          <Fade fraction={0} direction="up" triggerOnce={true}>
+            <p className="text-sm md:text-lg text-center max-w-3xl mx-auto mt-3 mb-4 font-poppins">
+              Stay informed with our latest updates and news. Explore impactful
+              stories, volunteer spotlights, and upcoming events. Stay connected
+              and engaged with our community.
+            </p>
+          </Fade>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-3 lg:gap-6">
+            {newsData.map((data) => (
+              <NewsCard key={data._id} data={data}></NewsCard>
+            ))}
           </div>
+        </div>
+
+        <div className="mt-5 lg:mt-10 mb-5 lg:mb-10">
+          <Fade fraction={0} direction="down" triggerOnce={true}>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold font-poppins mb-4">
+              Why Volunteer with Us?
+            </h1>
+          </Fade>
+
+          <WhyUs></WhyUs>
+        </div>
+
+        <div className="mt-5 lg:mt-10 mb-5 lg:mb-10">
+          <Fade fraction={0} direction="down" triggerOnce={true}>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold font-poppins mb-5">
+              Join Our Team
+            </h1>
+          </Fade>
           <JoinTeam></JoinTeam>
         </div>
       </div>
