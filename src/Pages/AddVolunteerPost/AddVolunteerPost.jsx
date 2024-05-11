@@ -29,7 +29,7 @@ const AddVolunteerPost = () => {
     const category = document.getElementById("dropdown").value;
     const location = form.location.value;
     const thumbnail = form.thumbnail.value;
-    const volunteers_needed = form.volunteers_needed.value;
+    const volunteers_needed = parseInt(form.volunteers_needed.value);
     const deadline = startDate.toDateString();
     const organizer_name = user?.displayName;
     const organizer_email = user?.email;
@@ -40,6 +40,7 @@ const AddVolunteerPost = () => {
       setCategoryErr("Select Category Name !");
       return;
     }
+
     const newPost = {
       post_title,
       category,

@@ -1,24 +1,44 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 // import axios from "axios";
 // import { useEffect, useState } from "react";
 import VolunteerCard from "../Home/VolunteerCard";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
+import { useState } from "react";
 
 const NeedVolunteer = () => {
-  // const [volunteerJob, setVolunteerJob] = useState([]);
+  const [volunteerPosts, setVolunteerPosts] = useState([]);
   const axiosSecure = useAxiosSecure();
+  const [searchText, setSearchText] = useState("");
 
   const {
-    data: volunteerJob = [],
+    data = [],
     isPending,
     isError,
   } = useQuery({
     queryKey: ["posts"],
     queryFn: () => {
-      return axiosSecure.get(`/volunteerposts`).then((res) => res.data);
+      return axiosSecure.get(`/volunteerposts`).then((res) => {
+        setVolunteerPosts(res.data);
+        return res.data;
+      });
     },
   });
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchBoxValue = e.target.searchText.value;
+    setSearchText(searchBoxValue);
+
+    axiosSecure
+      .get(`/volunteerpostssearch?search=${searchText}`)
+      .then((res) => {
+        console.log(res.data);
+        setVolunteerPosts(res.data);
+      });
+  };
+
   if (isPending) {
     return (
       <>
@@ -127,7 +147,7 @@ const NeedVolunteer = () => {
 
   return (
     <>
-      <form className="max-w-md mx-auto my-5">
+      <form onSubmit={handleSearch} className="max-w-md mx-auto my-5">
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -153,9 +173,9 @@ const NeedVolunteer = () => {
             </svg>
           </div>
           <input
+            name="searchText"
             type="search"
-            id="default-search"
-            className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-xl bg-base-100 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+            className="block w-full p-4 ps-10 text-sm  border border-gray-300 rounded-xl bg-base-100 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
             placeholder="Search Post, Volunteers..."
             required
           />
@@ -168,7 +188,7 @@ const NeedVolunteer = () => {
         </div>
       </form>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-5 lg:gap-6">
-        {volunteerJob.map((job, index) => (
+        {volunteerPosts.map((job, index) => (
           <VolunteerCard key={index} job={job}></VolunteerCard>
         ))}
       </div>
