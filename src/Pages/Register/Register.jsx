@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { IoIosEye } from "react-icons/io";
@@ -11,7 +11,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { createUser, updateRegisterProfile, setReload, reload, setLoading } =
     useAuth();
-
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleShowPassword = () => {
@@ -37,7 +37,7 @@ const Register = () => {
           .catch((err) => console.log(err));
 
         toast.success("Registration Successful.");
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
         setLoading(false);

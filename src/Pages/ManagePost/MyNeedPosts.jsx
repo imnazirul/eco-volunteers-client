@@ -23,12 +23,10 @@ const MyNeedPosts = () => {
   } = useQuery({
     queryKey: ["vPostsData"],
     queryFn: () => {
-      return axiosSecure
-        .get(`/volunteerposts?email=${user?.email}`)
-        .then((res) => {
-          setVolunteerData(res.data);
-          return res.data;
-        });
+      return axiosSecure.get(`/needposts?email=${user?.email}`).then((res) => {
+        setVolunteerData(res.data);
+        return res.data;
+      });
     },
   });
 
@@ -144,7 +142,7 @@ const MyNeedPosts = () => {
           </div>
         </div>
         {layout ? (
-          <div className="border rounded-xl overflow-hidden">
+          <div className="border rounded-xl">
             <table className="w-full text-left rtl:text-right  ">
               <thead className="  uppercase bg-base-300 ">
                 <tr className="text-center text-[15px]">

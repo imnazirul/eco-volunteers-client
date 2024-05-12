@@ -23,6 +23,7 @@ const UpdateVolunteerPost = () => {
   } = useQuery({
     queryKey: ["updatePost"],
     queryFn: () => {
+      // const user = ;
       return axiosSecure.get(`singlevpost/${id}`).then((res) => {
         setStartDate(new Date(res.data?.deadline));
         return res.data;

@@ -1,3 +1,5 @@
+import { GrUpdate } from "react-icons/gr";
+import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
@@ -17,7 +19,8 @@ const MyNeedRow = ({ post, index, handleDeletePost }) => {
       <td className="px-6 py-4">{post?.volunteers_needed}</td>
       <td className="px-6 py-4 flex gap-3 justify-center">
         <Link to={`/update_post/${post?._id}`}>
-          <button className="btn btn-sm font-medium text-blue-500 ">
+          <button className="btn btn-sm bg-base-100 border-blue-500 border  hover:bg-transparent flex  items-center font-semibold  rounded-md  text-blue-500 ">
+            <GrUpdate className="hidden md:flex"></GrUpdate>
             Update
           </button>
         </Link>
@@ -25,19 +28,11 @@ const MyNeedRow = ({ post, index, handleDeletePost }) => {
           onClick={() => {
             handleDeletePost(post?._id);
           }}
-          className="btn btn-sm font-medium text-red-500 "
+          className="btn btn-sm bg-base-100 flex border-red-500 border  hover:bg-transparent items-center  font-semibold rounded-md  text-red-500 "
         >
+          <MdDelete></MdDelete>
           Delete
         </button>
-        {/* <Button
-          onClick={() => {
-            handleDeletePost(post?._id);
-          }}
-          variant="outlined red"
-          startIcon={<DeleteIcon />}
-        >
-          Delete
-        </Button> */}
       </td>
     </tr>
   );

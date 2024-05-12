@@ -14,7 +14,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn, signInWithGoogle, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const location = useLocation();
 
   const handleShowPassword = () => {
@@ -49,7 +48,7 @@ const Login = () => {
     signInWithGoogle()
       .then(() => {
         toast.success("Sign In Successful");
-        // navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
         setLoading(false);

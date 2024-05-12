@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useAuth from "../../CustomHooks/useAuth";
 import { Tooltip } from "react-tooltip";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Navbar = () => {
   const { user, loading, logOut } = useAuth();
@@ -55,10 +56,10 @@ const Navbar = () => {
               className="dropdown-content z-50 menu p-3 shadow bg-base-100 rounded-box w-52 font-semibold border space-y-2"
             >
               <li>
-                <Link to="/add_volunteer_post">Add Volunteer Post</Link>
+                <NavLink to="/add_volunteer_post">Add Volunteer Post</NavLink>
               </li>
               <li>
-                <Link to="/manage_post">Manage My Post</Link>
+                <NavLink to="/manage_post">Manage My Post</NavLink>
               </li>
             </ul>
           </div>
@@ -114,7 +115,55 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm gap-4 dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 border border-btn-1 py-5 md:text-lg md:py-7 "
           >
-            {navLinks}
+            <span className="hover:text-[#3d52a0] ">
+              <NavLink className="px-4 py-2 rounded-lg" to="/">
+                Home
+              </NavLink>
+            </span>{" "}
+            <span className="hover:text-[#3d52a0]">
+              <NavLink className="px-4 py-2 rounded-lg" to="/need_volunteer">
+                Need Volunteer
+              </NavLink>
+            </span>
+            {user && (
+              <>
+                {" "}
+                <div className="dropdown dropdown-bottom">
+                  <div className="pl-4 flex gap-1 items-center">
+                    <h1>My Profile</h1>
+                    <IoIosArrowDown className="text-lg"></IoIosArrowDown>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="-ml-[9px] pl-9 dropdown-content z-50 menu p-3  bg-base-100 rounded-b-xl w-52 font-semibold  space-y-2"
+                  >
+                    <li>
+                      <NavLink to="/add_volunteer_post">
+                        Add Volunteer Post
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/manage_post">Manage My Post</NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </>
+            )}
+            {!user && (
+              <>
+                {" "}
+                <span className="hover:text-[#3d52a0]">
+                  <NavLink className="px-4 py-2 rounded-lg" to="/login">
+                    Login
+                  </NavLink>
+                </span>
+                <span className="hover:text-[#3d52a0]">
+                  <NavLink className="px-4 py-2 rounded-lg" to="/register">
+                    Register
+                  </NavLink>
+                </span>{" "}
+              </>
+            )}
           </div>
         </div>
         <Link
