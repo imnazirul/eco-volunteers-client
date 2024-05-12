@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 const JoinTeam = () => {
   return (
-    <div className="flex gap-8 items-center">
+    <div className="flex flex-col md:flex-row gap-8 items-center">
       <div className="space-y-3 max-w-2xl">
-        <h1 className="text-4xl font-semibold mb-10 max-w-xl">
+        <h1 className="text-2xl md:text-4xl font-semibold mb-10 max-w-xl text-center md:text-left">
           Join us and make the
           <span className="text-primary-1"> world cleaner </span>
           and better with our team
         </h1>
-        <p className="text-xl">
+        <p className="md:text-xl">
           Join us in our mission to make the world cleaner and better! Become a
           vital part of our team and contribute to positive change. Together, we
           can make a lasting impact on the environment and communities. Join

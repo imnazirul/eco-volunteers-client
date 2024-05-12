@@ -6,6 +6,27 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
+  // const { logOut } = useAuth();
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   axiosSecure.interceptors.response.use(
+  //     (res) => {
+  //       return res;
+  //     },
+  //     (err) => {
+  //       if (err.response.status === 401 || err.response.status === 403) {
+  //         console.log("logout");
+  //         logOut()
+  //           .then(() => {
+  //             navigate("/login");
+  //           })
+  //           .catch((err) => console.log(err));
+  //       }
+  //     }
+  //   );
+  // }, [logOut]);
+
   return axiosSecure;
 };
 

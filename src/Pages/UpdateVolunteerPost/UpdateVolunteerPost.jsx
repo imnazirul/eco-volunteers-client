@@ -113,7 +113,11 @@ const UpdateVolunteerPost = () => {
   };
 
   return (
-    <div className="p-6 container font-poppins bg-[#0b2d81] mx-auto rounded-lg">
+    <div
+      className={
+        "p-6 container font-poppins bg-[url('https://i.ibb.co/qnQH7fx/pexels-pixabay-459335.jpg')] bg-blend-overlay bg-[#0b2d81] mx-auto rounded-lg bg-cover bg-center"
+      }
+    >
       <Helmet>
         <title>Update Volunteer Post | ECO Volunteers</title>
       </Helmet>
@@ -274,7 +278,7 @@ const UpdateVolunteerPost = () => {
           ></textarea>
         </div>
 
-        <button className="btn w-64 max-w-64 rounded-3xl border-none mx-auto bg-secondary-1 hover:bg-secondary-1 text-white font-poppins text-lg md:col-span-2">
+        <button className="btn w-64 max-w-64 rounded-3xl border-none mx-auto bg-primary-1 hover:bg-secondary-1 text-white font-poppins text-lg md:col-span-2">
           Update Post
         </button>
       </form>

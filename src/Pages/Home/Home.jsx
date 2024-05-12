@@ -117,7 +117,7 @@ const Home = () => {
           )}
         </div>
         <Link to="/need_volunteer">
-          <button className="my-5 btn text-lg text-secondary-1 mx-auto flex justify-center">
+          <button className="my-5 btn max-sm:btn-sm text-lg text-secondary-1 mx-auto flex justify-center">
             See All
           </button>
         </Link>

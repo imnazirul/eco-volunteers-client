@@ -69,7 +69,7 @@ const AddVolunteerPost = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="p-6 container font-poppins bg-[#3c63c5] mx-auto rounded-lg">
+    <div className="p-6 container font-poppins bg-cover bg-blend-overlay bg-[url('https://i.ibb.co/GnH7hr0/pexels-ann-h-45017-1762851.jpg')] bg-center bg-[#3d52a0] mx-auto rounded-lg">
       <Helmet>
         <title>Add Volunteer Post | ECO Volunteers</title>
       </Helmet>

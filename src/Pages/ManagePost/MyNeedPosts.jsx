@@ -125,17 +125,17 @@ const MyNeedPosts = () => {
     <div>
       <div className="relative overflow-x-auto  ">
         <div className="flex justify-end mb-5 items-center gap-4 bg-base-100 border rounded-xl">
-          <h1 className="text-2xl">Change Layout</h1>
+          <h1 className="text-xl md:text-2xl">Change Layout</h1>
           <div className="flex gap-3  px-3 py-2">
             <ImMenu
               onClick={() => setLayout(true)}
-              className={`text-4xl cursor-pointer ${
+              className={`text-3xl md:text-4xl cursor-pointer ${
                 layout ? "text-blue-500" : ""
               }`}
             ></ImMenu>
             <CgMenuGridR
               onClick={() => setLayout(false)}
-              className={`text-4xl cursor-pointer ${
+              className={`text-3xl md:text-4xl cursor-pointer ${
                 !layout ? "text-blue-500" : ""
               }`}
             ></CgMenuGridR>

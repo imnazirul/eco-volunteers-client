@@ -12,7 +12,7 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 import useAxiosSecure from "../CustomHooks/useAxiosSecure";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {

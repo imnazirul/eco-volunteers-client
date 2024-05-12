@@ -76,8 +76,7 @@ const BannerSlider = () => {
                       you're passionate about education, environmental
                       conservation, or social justice, we have diverse
                       opportunities where you can contribute your time and
-                      talents. Explore our volunteering options and start making
-                      an impact now!
+                      talents.
                     </p>
                   </Fade>
                 </div>
@@ -105,8 +104,7 @@ const BannerSlider = () => {
                       connections. Our volunteer programs offer not just
                       opportunities to serve but also chances to build
                       friendships, learn new skills, and create lasting
-                      memories. Join our community of volunteers today and be
-                      part of something bigger than yourself.
+                      memories.
                     </p>
                   </Fade>
                 </div>
@@ -134,8 +132,7 @@ const BannerSlider = () => {
                       you're a student looking to fulfill service hours, a
                       professional seeking to give back, or a retiree wanting to
                       stay active in the community, we welcome volunteers of all
-                      ages and backgrounds. Start your journey with us and be
-                      the change you wish to see.
+                      ages and backgrounds.
                     </p>
                   </Fade>
                 </div>
@@ -164,8 +161,7 @@ const BannerSlider = () => {
                       volunteering. Our platform offers a wide range of
                       opportunities tailored to your interests and schedule.
                       Whether you have a few hours a week or just want to
-                      contribute occasionally, there's a role for you here. Join
-                      us on a journey of self-discovery and meaningful impact.
+                      contribute occasionally, there's a role for you here.
                     </p>
                   </Fade>
                 </div>
