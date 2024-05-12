@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const VolunteerCard = ({ job }) => {
+  const deadline = new Date(job.deadline).toDateString();
+
   const {
     _id,
     thumbnail,
@@ -12,10 +14,11 @@ const VolunteerCard = ({ job }) => {
     category,
     location,
     volunteers_needed,
-    deadline,
+    // deadline,
     organizer_name,
     organizer_email,
   } = job;
+
   return (
     <div>
       <div className="rounded-xl  bg-base-100 border">

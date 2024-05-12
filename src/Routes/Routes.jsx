@@ -10,7 +10,7 @@ import VolunteerNeedDetails from "../Pages/VolunteerNeedDetails/VolunteerNeedDet
 import ManagePost from "../Pages/ManagePost/ManagePost";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import UpdateVolunteerPost from "../Pages/UpdateVolunteerPost/UpdateVolunteerPost";
-import BeAVolunteer from "../Pages/BeAVolunteer/BeAVolunteer";
+import BeAVolunteer from "../Pages/BeAVolunteer.jsx/BeAVolunteer";
 
 const router = createBrowserRouter([
   {

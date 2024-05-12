@@ -21,9 +21,9 @@ const Home = () => {
   } = useQuery({
     queryKey: ["vCard"],
     queryFn: () => {
-      return axiosSecure
-        .get(`/volunteerposts?limit=${6}&sort=${"deadline"}`)
-        .then((res) => res.data);
+      return axiosSecure.get(`/volunteerposts?limit=${6}`).then((res) => {
+        return res.data;
+      });
     },
   });
 

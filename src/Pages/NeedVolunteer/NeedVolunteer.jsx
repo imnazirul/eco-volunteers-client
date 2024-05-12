@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet-async";
 const NeedVolunteer = () => {
   const [volunteerPosts, setVolunteerPosts] = useState([]);
   const axiosSecure = useAxiosSecure();
-  const [searchText, setSearchText] = useState("");
+  const [searchError, setSearchError] = useState("");
 
   const {
     data = [],
@@ -30,13 +30,16 @@ const NeedVolunteer = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const searchBoxValue = e.target.searchText.value;
-    setSearchText(searchBoxValue);
 
     axiosSecure
-      .get(`/volunteerpostssearch?search=${searchText}`)
+      .get(`/volunteerpostssearch?search=${searchBoxValue}`)
       .then((res) => {
-        console.log(res.data);
         setVolunteerPosts(res.data);
+        if (res.data.length === 0) {
+          setSearchError("No Search Match Data Found!");
+        } else {
+          setSearchError("");
+        }
       });
   };
 
@@ -49,14 +52,14 @@ const NeedVolunteer = () => {
         <form className="max-w-md mx-auto my-5">
           <label
             htmlFor="default-search"
-            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            className="mb-2 text-sm font-medium  sr-only "
           >
             Search
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
-                className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                className="w-4 h-4 text-gray-500 "
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -74,7 +77,7 @@ const NeedVolunteer = () => {
             <input
               type="search"
               id="default-search"
-              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-xl bg-base-100 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-xl bg-base-100  focus:border-blue-500 placeholder-gray-400 focus:ring-blue-500  outline-none"
               placeholder="Search Post, Volunteers..."
               required
             />
@@ -181,11 +184,10 @@ const NeedVolunteer = () => {
             type="search"
             className="block w-full p-4 ps-10 text-sm  border border-gray-300 rounded-xl bg-base-100 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
             placeholder="Search Post, Volunteers..."
-            required
           />
           <button
             type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white absolute end-2.5 bottom-2.5 bg-primary-1 hover:bg-primary-1 focus:ring-4 focus:outline-none  font-medium rounded-xl text-sm px-4 py-2 focus:ring-secondary-1"
           >
             Search
           </button>
@@ -196,6 +198,12 @@ const NeedVolunteer = () => {
           <VolunteerCard key={index} job={job}></VolunteerCard>
         ))}
       </div>
+
+      {searchError && (
+        <div className="flex h-[50vh] items-center justify-center">
+          <h1 className="text-4xl text-center text-primary-1">{searchError}</h1>
+        </div>
+      )}
     </>
   );
 };

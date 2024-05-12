@@ -5,12 +5,17 @@ import useAuth from "../../CustomHooks/useAuth";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { ImMenu } from "react-icons/im";
+import { CgMenuGridR } from "react-icons/cg";
+import MyNeedRow from "./MyNeedRow";
+import MyNeedPostCard from "./MyNeedPostCard";
 
 const MyNeedPosts = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [volunteerData, setVolunteerData] = useState([]);
+  const [layout, setLayout] = useState(true);
+
   const {
     data: postsData = [],
     isPending,
@@ -120,65 +125,72 @@ const MyNeedPosts = () => {
   };
   return (
     <div>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full  text-left rtl:text-right  ">
-          <thead className="  uppercase bg-base-300 ">
-            <tr className="text-center text-[15px]">
-              <th scope="col" className="px-6 py-3">
-                Index
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Post Title
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Deadline
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Category
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Volunteer Needed
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {volunteerData.map((post, index) => (
-              <tr
+      <div className="relative overflow-x-auto  ">
+        <div className="flex justify-end mb-5 items-center gap-4 bg-base-100 border rounded-xl">
+          <h1 className="text-2xl">Change Layout</h1>
+          <div className="flex gap-3  px-3 py-2">
+            <ImMenu
+              onClick={() => setLayout(true)}
+              className={`text-4xl cursor-pointer ${
+                layout ? "text-blue-500" : ""
+              }`}
+            ></ImMenu>
+            <CgMenuGridR
+              onClick={() => setLayout(false)}
+              className={`text-4xl cursor-pointer ${
+                !layout ? "text-blue-500" : ""
+              }`}
+            ></CgMenuGridR>
+          </div>
+        </div>
+        {layout ? (
+          <div className="border rounded-xl overflow-hidden">
+            <table className="w-full text-left rtl:text-right  ">
+              <thead className="  uppercase bg-base-300 ">
+                <tr className="text-center text-[15px]">
+                  <th scope="col" className="px-6 py-3">
+                    Index
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Post Title
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Deadline
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Category
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Volunteer Needed
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {volunteerData.map((post, index) => (
+                  <MyNeedRow
+                    key={post._id}
+                    handleDeletePost={handleDeletePost}
+                    index={index}
+                    post={post}
+                  ></MyNeedRow>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-3 lg:gap-6 mt-4">
+            {volunteerData.map((post) => (
+              <MyNeedPostCard
                 key={post._id}
-                className="text-center bg-base-100 border-b border-gray-300"
-              >
-                <td className="px-6 py-4">{index + 1}</td>
-                <td
-                  scope="row"
-                  className="px-6 py-4 font-medium  whitespace-nowrap "
-                >
-                  {post?.post_title}
-                </td>
-                <td className="px-6 py-4">{post?.deadline}</td>
-                <td className="px-6 py-4">{post?.category}</td>
-                <td className="px-6 py-4">{post?.volunteers_needed}</td>
-                <td className="px-6 py-4 flex gap-3 justify-center">
-                  <Link to={`/update_post/${post?._id}`}>
-                    <button className="btn btn-sm font-medium text-blue-500 ">
-                      Update
-                    </button>
-                  </Link>
-                  <button
-                    onClick={() => {
-                      handleDeletePost(post?._id);
-                    }}
-                    className="btn btn-sm font-medium text-red-500 "
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
+                post={post}
+                handleDeletePost={handleDeletePost}
+              ></MyNeedPostCard>
             ))}
-          </tbody>
-        </table>
+          </div>
+        )}
       </div>
     </div>
   );
