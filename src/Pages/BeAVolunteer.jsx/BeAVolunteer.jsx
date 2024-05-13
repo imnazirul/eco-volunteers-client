@@ -19,10 +19,10 @@ const BeAVolunteer = () => {
     isPending,
     isError,
   } = useQuery({
-    queryKey: ["singleJob"],
+    queryKey: ["singleJobPost"],
     queryFn: () => {
       return axiosSecure
-        .get(`/singlevpost/${id}?${user?.email}`)
+        .get(`/singlevpost/${id}?email=${user?.email}`)
         .then((res) => {
           setNeededVolunteers(res.data?.volunteers_needed);
           return res.data;
@@ -89,7 +89,10 @@ const BeAVolunteer = () => {
       return toast.error("All Volunteers Need Has Been FullFilled!");
     }
     axiosSecure
-      .post(`/updatevolunteerneeded?id=${id}`, volunteerRequest)
+      .post(
+        `/updatevolunteerneeded?id=${id}&email=${user?.email}`,
+        volunteerRequest
+      )
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           const remainingNeed = neededVolunteers - 1;

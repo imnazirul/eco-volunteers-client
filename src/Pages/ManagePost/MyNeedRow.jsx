@@ -19,8 +19,9 @@ const MyNeedRow = ({ post, index, handleDeletePost }) => {
       <td className="px-6 py-4">{post?.volunteers_needed}</td>
       <td className="px-6 py-4 flex gap-3 justify-center">
         <Link to={`/update_post/${post?._id}`}>
-          <button className="btn btn-sm bg-base-100 border-blue-500 border  hover:bg-transparent flex  items-center font-semibold  rounded-md  text-blue-500 ">
+          <button className="btn btn-sm bg-base-100 flex border-blue-500  border  hover:bg-transparent items-center  font-semibold rounded-md text-xs text-blue-500">
             <GrUpdate className="hidden md:flex"></GrUpdate>
+            {/* <RxUpdate></RxUpdate> */}
             Update
           </button>
         </Link>

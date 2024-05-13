@@ -107,17 +107,19 @@ const MyNeedPosts = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/volunteerposts?deleteid=${id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
-            const remaining = volunteerData.filter((data) => data._id !== id);
-            setVolunteerData(remaining);
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-          }
-        });
+        axiosSecure
+          .delete(`/volunteerposts?deleteid=${id}&email=${user?.email}`)
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              const remaining = volunteerData.filter((data) => data._id !== id);
+              setVolunteerData(remaining);
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
       }
     });
   };

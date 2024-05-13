@@ -2,10 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../CustomHooks/useAuth";
+import { useState } from "react";
 
 const VolunteerNeedDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
+  const { user } = useAuth();
+  const [deadlineDate, setDeadlineDate] = useState(0);
+
+  const deadline = new Date(deadlineDate).toDateString();
 
   const {
     data: singleData,
@@ -14,7 +20,12 @@ const VolunteerNeedDetails = () => {
   } = useQuery({
     queryKey: ["singleJob"],
     queryFn: () => {
-      return axiosSecure.get(`/singlevpost/${id}`).then((res) => res.data);
+      return axiosSecure
+        .get(`/singlevpost/${id}?email=${user?.email}`)
+        .then((res) => {
+          setDeadlineDate(res.data?.deadline);
+          return res.data;
+        });
     },
   });
 
@@ -48,7 +59,6 @@ const VolunteerNeedDetails = () => {
     category,
     location,
     volunteers_needed,
-    deadline,
     organizer_name,
     organizer_email,
   } = singleData;
@@ -67,7 +77,6 @@ const VolunteerNeedDetails = () => {
           >
             <img
               src={thumbnail}
-              // thumbnail
               alt=""
               className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500"
             />

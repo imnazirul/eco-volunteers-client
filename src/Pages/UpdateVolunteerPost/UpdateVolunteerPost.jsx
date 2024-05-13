@@ -21,13 +21,15 @@ const UpdateVolunteerPost = () => {
     isPending,
     isError,
   } = useQuery({
-    queryKey: ["updatePost"],
+    queryKey: ["singleVPostData"],
     queryFn: () => {
       // const user = ;
-      return axiosSecure.get(`singlevpost/${id}`).then((res) => {
-        setStartDate(new Date(res.data?.deadline));
-        return res.data;
-      });
+      return axiosSecure
+        .get(`/singlevpost/${id}?email=${user?.email}`)
+        .then((res) => {
+          setStartDate(new Date(res.data?.deadline));
+          return res.data;
+        });
     },
   });
   if (isPending) {
@@ -65,7 +67,7 @@ const UpdateVolunteerPost = () => {
     const location = form.location.value;
     const thumbnail = form.thumbnail.value;
     const volunteers_needed = parseInt(form.volunteers_needed.value);
-    const deadline = startDate.toDateString();
+    const deadline = startDate.getTime();
     const organizer_name = user?.displayName;
     const organizer_email = user?.email;
     const description = form.description.value;
@@ -97,7 +99,7 @@ const UpdateVolunteerPost = () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         axiosSecure
-          .put(`/volunteerposts?update=${id}`, updatedPost)
+          .put(`/volunteerposts?update=${id}&email=${user?.email}`, updatedPost)
           .then((res) => {
             if (res.data.modifiedCount > 0) {
               Swal.fire({

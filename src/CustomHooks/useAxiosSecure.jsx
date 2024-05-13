@@ -1,31 +1,34 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
+import useAuth from "./useAuth";
+import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://volunteer-management-server-nine.vercel.app/",
   withCredentials: true,
 });
 
 const useAxiosSecure = () => {
-  // const { logOut } = useAuth();
-  // const navigate = useNavigate();
+  const { logOut } = useAuth();
 
-  // useEffect(() => {
-  //   axiosSecure.interceptors.response.use(
-  //     (res) => {
-  //       return res;
-  //     },
-  //     (err) => {
-  //       if (err.response.status === 401 || err.response.status === 403) {
-  //         console.log("logout");
-  //         logOut()
-  //           .then(() => {
-  //             navigate("/login");
-  //           })
-  //           .catch((err) => console.log(err));
-  //       }
-  //     }
-  //   );
-  // }, [logOut]);
+  useEffect(() => {
+    axiosSecure.interceptors.response.use(
+      (res) => {
+        return res;
+      },
+      (error) => {
+        if (error.response.status === 401 || error.response.status === 403) {
+          // console.log("logout the user");
+          logOut()
+            .then(() => <Navigate to="/login"></Navigate>)
+            .catch((err) => console.log(err));
+        }
+
+        return Promise.reject(error);
+      }
+    );
+  }, [logOut]);
 
   return axiosSecure;
 };

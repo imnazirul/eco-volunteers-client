@@ -113,16 +113,20 @@ const MyRequestedPosts = () => {
       confirmButtonText: "Yes, Cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/requestedpost?cancelid=${id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
-            const remaining = requestedPosts.filter((data) => data._id !== id);
-            setRequestedPosts(remaining);
-            Swal.fire({
-              title: "Cancelled Successfully!",
-              icon: "success",
-            });
-          }
-        });
+        axiosSecure
+          .delete(`/requestedpost?cancelid=${id}&email=${user?.email}`)
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              const remaining = requestedPosts.filter(
+                (data) => data._id !== id
+              );
+              setRequestedPosts(remaining);
+              Swal.fire({
+                title: "Cancelled Successfully!",
+                icon: "success",
+              });
+            }
+          });
       }
     });
   };

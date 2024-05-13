@@ -3,16 +3,17 @@ import GoogleButton from "react-google-button";
 
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+// import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import useAuth from "../../CustomHooks/useAuth";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn, signInWithGoogle, setLoading } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, setLoading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 

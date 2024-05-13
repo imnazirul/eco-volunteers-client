@@ -56,7 +56,7 @@ const AddVolunteerPost = () => {
     };
 
     axiosSecure
-      .post("/volunteerposts", newPost)
+      .post(`/volunteerposts?email=${user?.email}`, newPost)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
