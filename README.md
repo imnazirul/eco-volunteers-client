@@ -6,9 +6,9 @@
 
 ## Features and Characteristics:
 
-- **User-friendly Interface**: Our website offers an intuitive and easy-to-navigate interface, making it simple for users to explore and discover a vast selection of Tourist spots.
+- **User-friendly Interface**: Our website offers an intuitive and easy-to-navigate interface, making it simple for users to explore and discover a vast selection of Volunteers Post.
 
-- **Search Feature**: In the Need Volunteers Page an User can easily search opportunities based on their interests and skills ensuring they find the best match by using the search box.
+- **Search Feature**: In the Need Volunteers Page an User can easily search opportunities based on their interests and skills by using the search box.
 
 - **Manage Volunteers Post:** In the Manage Volunteers Post page user can see his/her Applied volunteers post list and also his/her added Volunteers Need Post List.
 

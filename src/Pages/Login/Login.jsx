@@ -7,7 +7,6 @@ import { useState } from "react";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import useAuth from "../../CustomHooks/useAuth";
 
