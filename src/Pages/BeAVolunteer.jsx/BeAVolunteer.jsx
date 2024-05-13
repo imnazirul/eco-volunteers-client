@@ -21,10 +21,12 @@ const BeAVolunteer = () => {
   } = useQuery({
     queryKey: ["singleJob"],
     queryFn: () => {
-      return axiosSecure.get(`/singlevpost/${id}`).then((res) => {
-        setNeededVolunteers(res.data?.volunteers_needed);
-        return res.data;
-      });
+      return axiosSecure
+        .get(`/singlevpost/${id}?${user?.email}`)
+        .then((res) => {
+          setNeededVolunteers(res.data?.volunteers_needed);
+          return res.data;
+        });
     },
   });
 

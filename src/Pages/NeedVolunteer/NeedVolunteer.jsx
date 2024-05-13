@@ -25,6 +25,7 @@ const NeedVolunteer = () => {
         return res.data;
       });
     },
+    refetchOnWindowFocus: false,
   });
 
   const handleSearch = (e) => {
