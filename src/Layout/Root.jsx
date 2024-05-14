@@ -9,7 +9,7 @@ const Root = () => {
       <Navbar></Navbar>
       <div className="overflow-x-hidden">
         <Toaster></Toaster>
-        <div className="space-y-5 lg:space-y-10 mt-16">
+        <div className="space-y-5 lg:space-y-10 mt-[70px]">
           <div className="container mx-auto font-poppins px-5 lg:px-10 ">
             <Outlet></Outlet>
           </div>

@@ -46,7 +46,7 @@ const MyNeedPosts = () => {
     );
   } else if (postsData.length === 0) {
     return (
-      <h1 className="text-5xl  mx-auto text-center h-[50vh] flex flex-col justify-center bg-base-300">
+      <h1 className="text-lg px-2 md:text-3xl lg:text-5xl  mx-auto text-center md:h-[50vh] h-[20vh] flex flex-col justify-center bg-base-300">
         You Didn't Added Any Volunteer Post
       </h1>
     );
@@ -55,8 +55,12 @@ const MyNeedPosts = () => {
   if (isError) {
     <div className="max-w-96 mx-auto text-center min-h-[70vh] flex flex-col justify-center">
       {" "}
-      <h1 className="text-3xl">Data Not Found!</h1>
-      <h3 className="text-xl">Refresh The Page or Try Again Later</h3>
+      <h1 className="text-2xl md:text-3xl text-center font-semibold  mb-2">
+        Data Not Found!
+      </h1>
+      <h3 className="text-sm md:text-lg text-center lg:text-xl">
+        Refresh The Page or Try Again Later
+      </h3>
     </div>;
   }
 

@@ -8,9 +8,14 @@ const Footer = () => {
           </div>
 
           <div className=" max-w-xs mt-3 text-gray-900 ">
-            Join us in making a difference! Connect, volunteer, and transform
-            lives. Your time and dedication can create positive change in our
-            community.
+            <p className="mb-2">
+              {" "}
+              Join us in making a difference! Connect, volunteer, and transform
+              lives. Your time and dedication can create a positive change.
+            </p>
+
+            <p className="font-semibold">Email: contact@ecovolunteers.com</p>
+            <p className="font-semibold">Phone: +123 456 7890</p>
           </div>
         </div>
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">

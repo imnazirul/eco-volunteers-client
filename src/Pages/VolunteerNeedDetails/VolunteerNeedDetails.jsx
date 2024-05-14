@@ -53,8 +53,12 @@ const VolunteerNeedDetails = () => {
     return (
       <div className="max-w-96 mx-auto text-center h-[70vh] flex justify-center flex-col">
         {" "}
-        <h1 className="text-3xl">Data Not Found!</h1>
-        <h3 className="text-xl">Refresh The Page or Try Again Later</h3>
+        <h1 className="text-2xl md:text-3xl text-center font-semibold  mb-2">
+          Data Not Found!
+        </h1>
+        <h3 className="text-sm md:text-lg text-center lg:text-xl">
+          Refresh The Page or Try Again Later
+        </h3>
       </div>
     );
   }
