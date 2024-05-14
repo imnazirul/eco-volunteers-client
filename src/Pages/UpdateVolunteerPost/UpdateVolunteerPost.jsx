@@ -117,7 +117,7 @@ const UpdateVolunteerPost = () => {
   return (
     <div
       className={
-        "p-6 container font-poppins bg-[url('https://i.ibb.co/1dLS72V/joel-filipe-Wc8k-Kry-EPM-unsplash.jpg')] bg-blend-overlay bg-[#0e589e] mx-auto rounded-lg bg-cover bg-center"
+        "p-6 container font-poppins bg-[url('https://i.ibb.co/1dLS72V/joel-filipe-Wc8k-Kry-EPM-unsplash.jpg')] bg-blend-overlay bg-[#083968] mx-auto rounded-lg bg-cover bg-center"
       }
     >
       <Helmet>

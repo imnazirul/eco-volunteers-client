@@ -5,19 +5,21 @@ import { MdCancel } from "react-icons/md";
 const MyRequestedPostCard = ({ post, handleCancelRequest }) => {
   return (
     <div className="w-full border px-4 py-3 font-poppins rounded-lg  bg-base-100">
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex max-sm:text-sm items-center justify-between mb-2">
         <span className="flex gap-1 items-center">
           <IoLocationSharp></IoLocationSharp> {post?.location}
         </span>
-        <span className="bg-[#7091e64d] self-start font-medium inline px-3 py-1 rounded-3xl text-[#3d52a0]">
+        <span className="bg-[#7091e64d] max-sm:text-sm self-start font-medium inline px-3 py-1 rounded-3xl text-[#3d52a0]">
           {post?.category}
         </span>
       </div>
 
       <div>
-        <h1 className="mt-2 text-xl font-semibold ">{post?.post_title}</h1>
+        <h1 className="mt-2 text-lg md:text-xl font-semibold ">
+          {post?.post_title}
+        </h1>
         <h3 className="my-3 ">
-          <span className="font-medium">Organizer</span>:{" "}
+          <span className="font-medium max-sm:text-sm">Organizer</span>:{" "}
           {post?.organizer_email}
         </h3>
         <div className="flex my-3 overflow-hidden rounded-lg bg-base-200">
@@ -35,7 +37,7 @@ const MyRequestedPostCard = ({ post, handleCancelRequest }) => {
           onClick={() => {
             handleCancelRequest(post?._id);
           }}
-          className="btn btn-sm bg-base-100 border-red-500 border  hover:bg-transparent items-center text-[17px] font-semibold rounded-md  text-red-500"
+          className="btn btn-sm bg-base-100 border-red-500 border  hover:bg-transparent items-center md:text-[17px] font-semibold rounded-md  text-red-500"
         >
           <MdCancel></MdCancel>
           Cancel Request

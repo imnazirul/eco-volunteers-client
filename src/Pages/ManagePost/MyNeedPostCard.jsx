@@ -8,17 +8,19 @@ const MyNeedPostCard = ({ post, handleDeletePost }) => {
   return (
     <div className="w-full border px-4 py-3 font-poppins rounded-lg  bg-base-100">
       <div className="flex items-center justify-between">
-        <span className="">
+        <span className="max-sm:text-sm">
           <span className="font-bold">Deadline</span>: <br />
           {deadline}
         </span>
-        <span className="bg-[#7091e64d] self-start font-medium inline px-3 py-1 rounded-3xl text-[#3d52a0]">
+        <span className="bg-[#7091e64d] max-sm:text-sm self-start font-medium inline px-3 py-1 rounded-3xl text-[#3d52a0]">
           {post?.category}
         </span>
       </div>
 
       <div>
-        <h1 className="mt-2 text-xl font-semibold ">{post?.post_title}</h1>
+        <h1 className="mt-2 text-lg md:text-xl font-semibold ">
+          {post?.post_title}
+        </h1>
         <div className="flex my-3 overflow-hidden rounded-lg bg-base-200">
           <div className="flex items-center  justify-center px-2 bg-primary-1 text-white"></div>
           <div className="flex items-center gap-2 p-2">
@@ -30,7 +32,7 @@ const MyNeedPostCard = ({ post, handleDeletePost }) => {
       <hr className="my-3" />
       <div className="flex justify-between">
         <Link to={`/update_post/${post?._id}`}>
-          <button className="btn btn-sm bg-base-100 border-blue-500 border  hover:bg-transparent items-center text-[17px] font-semibold  rounded-md  text-blue-500 ">
+          <button className="btn btn-sm bg-base-100 border-blue-500 border  hover:bg-transparent items-center md:text-[17px] font-semibold  rounded-md  text-blue-500 ">
             <GrUpdate></GrUpdate>
             Update
           </button>
@@ -40,7 +42,7 @@ const MyNeedPostCard = ({ post, handleDeletePost }) => {
           onClick={() => {
             handleDeletePost(post?._id);
           }}
-          className="btn btn-sm bg-base-100 border-red-500 border  hover:bg-transparent items-center text-[17px] font-semibold rounded-md  text-red-500 "
+          className="btn btn-sm bg-base-100 border-red-500 border  hover:bg-transparent items-center md:text-[17px] font-semibold rounded-md  text-red-500 "
         >
           <MdDelete></MdDelete>
           Delete

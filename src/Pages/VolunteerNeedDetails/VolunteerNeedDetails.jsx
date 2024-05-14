@@ -155,7 +155,7 @@ const VolunteerNeedDetails = () => {
                 </p>
               </div>
             </div>
-            <h2 className="text-lg md:text-3xl font-semibold leading-none flex gap-1 items-center">
+            <h2 className="text-lg md:text-xl lg:text-3xl font-semibold leading-none flex gap-1 items-center">
               <FaLocationDot></FaLocationDot> {location}
             </h2>
             <p className="mt-4 mb-8 text-sm">{long_description}</p>

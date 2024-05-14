@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const JoinTeam = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-8 items-center border p-5 rounded-xl">
+    <div className="flex flex-col lg:flex-row gap-8 items-center border p-5 rounded-xl">
       <div className="space-y-3 max-w-2xl">
         <h1 className="text-xl md:text-3xl font-semibold mb-10 max-w-xl text-center md:text-left">
           Join us and make the

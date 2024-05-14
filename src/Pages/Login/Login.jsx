@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div className="mb-5 lg:mb-10 bg-base-300 rounded-xl bg-[url('https://i.ibb.co/p312Ytr/pexels-pixabay-434337.jpg')] bg-cover bg-center bg-blend-overlay">
+    <div className="mb-5 lg:mb-10 bg-base-300 rounded-xl bg-[url('https://i.ibb.co/XFwZHc4/brandi-redd-a-JTi-W00qqt-I-unsplash-2.jpg')] bg-cover bg-center bg-blend-overlay">
       <Helmet>
         <title>Sign In | ECO Volunteers</title>
       </Helmet>
