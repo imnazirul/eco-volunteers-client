@@ -56,9 +56,9 @@ const Register = () => {
       </Helmet>
 
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-jost font-bold text-center pt-5 lg:pt-10 text-btn-1 font-poppins">
-        Register
+        REGISTER
       </h1>
-      <div className="hero px-2 py-5 lg:py-10 ">
+      <div className="hero flex justify-center flex-wrap px-2 py-5 lg:py-10 ">
         <div className="card shrink-0 w-full max-w-md md:border ">
           <form onSubmit={handleSubmit(handleRegister)} className="card-body">
             <div className="form-control">
