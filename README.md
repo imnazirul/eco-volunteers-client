@@ -12,7 +12,7 @@
 
 - **Manage Volunteers Post:** In the Manage Volunteers Post page User can see his/her Applied Volunteers Post list and also his/her added Volunteers Need Post List.Through this page User can also update, delete or cancel them.
 
-- **Layout Switch:** In the Manage Volunteers Post page User can see his Posts data by default in a table. But User can change the data layout by clicking the Table or Column icon on the UI.
+- **Layout Switch:** In the Need Volunteers Post page User can see his Posts data by default in a Three Column Layout Card. But User can change the data layout to Table or Column by clicking the Table or Column icon on the UI.
 
 - **Dark Mode:** User can change the website theme to dark or light.So that they can reduce eye strain. Dark mode enhances user experience,saving battery, and offering a sleek, modern interface."
 

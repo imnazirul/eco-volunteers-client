@@ -242,7 +242,7 @@ const Navbar = () => {
               </a>
               <button
                 onClick={handleSignOut}
-                className="max-sm:btn-sm bg-green-1000 btn bg-secondary-1 text-[#FCFCFC] font-bold hover:bg-secondary-1"
+                className="max-sm:btn-sm bg-green-1000 btn bg-secondary-1 text-[#FCFCFC] font-bold hover:bg-secondary-1 border-none"
               >
                 Sign Out
               </button>
@@ -250,7 +250,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="max-sm:btn-sm bg-green-1000 btn bg-secondary-1 text-[#FCFCFC] font-bold flex items-center gap-1 hover:bg-secondary-1"
+              className="max-sm:btn-sm bg-green-1000 btn bg-secondary-1 text-[#FCFCFC] font-bold flex items-center gap-1 hover:bg-secondary-1 border-none"
             >
               <FiLogIn></FiLogIn>Sign In
             </Link>
