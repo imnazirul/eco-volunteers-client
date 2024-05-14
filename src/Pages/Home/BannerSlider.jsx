@@ -39,7 +39,7 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  <h1 className="lg:mb-5 text-xl lg:text-4xl font-bold md:text-2xl font-poppins       dark:text-[#ffffffCC]">
+                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins       dark:text-[#ffffffCC]">
                     Join Us in Building a Better Tomorrow!
                   </h1>
 
@@ -47,8 +47,7 @@ const BannerSlider = () => {
                     <p className="md:mb-5 max-sm:text-sm font-poppins lg:text-lg dark:text-[#ffffffCC]">
                       Discover meaningful volunteer opportunities that align
                       with your passions and skills. Together, we can create
-                      positive change in our communities and beyond. Sign up
-                      today to make a difference!
+                      positive change in our communities and beyond.
                     </p>
                   </Fade>
                 </div>
@@ -66,7 +65,7 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  <h1 className="lg:mb-5 text-xl lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
+                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
                     Empower Your Community Through Volunteerism!
                   </h1>
 
@@ -75,8 +74,7 @@ const BannerSlider = () => {
                       Be a catalyst for change by volunteering with us. Whether
                       you're passionate about education, environmental
                       conservation, or social justice, we have diverse
-                      opportunities where you can contribute your time and
-                      talents.
+                      opportunities.
                     </p>
                   </Fade>
                 </div>
@@ -94,15 +92,14 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  <h1 className="lg:mb-5 text-xl lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
+                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
                     Make Memories, Make Friends, Make a Difference!
                   </h1>
 
                   <Fade direction="up">
                     <p className="md:mb-5 max-sm:text-sm font-poppins lg:text-lg dark:text-[#ffffffCC]">
                       Experience the joy of giving back while forging lifelong
-                      connections. Our volunteer programs offer not just
-                      opportunities to serve but also chances to build
+                      connections. Learn how to serve and also chances to build
                       friendships, learn new skills, and create lasting
                       memories.
                     </p>
@@ -122,7 +119,7 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  <h1 className="lg:mb-5 text-xl lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
+                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
                     Be the Change You Want to See in the World!
                   </h1>
 
@@ -131,8 +128,7 @@ const BannerSlider = () => {
                       Ready to turn your passion for change into action? Whether
                       you're a student looking to fulfill service hours, a
                       professional seeking to give back, or a retiree wanting to
-                      stay active in the community, we welcome volunteers of all
-                      ages and backgrounds.
+                      stay active in the community.
                     </p>
                   </Fade>
                 </div>
@@ -151,7 +147,7 @@ const BannerSlider = () => {
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
                   {" "}
-                  <h1 className="lg:mb-5 text-xl lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
+                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
                     Discover Your Purpose, Volunteer with Us!
                   </h1>
                   <Fade direction="up">
@@ -160,8 +156,7 @@ const BannerSlider = () => {
                       Uncover your potential and find fulfillment through
                       volunteering. Our platform offers a wide range of
                       opportunities tailored to your interests and schedule.
-                      Whether you have a few hours a week or just want to
-                      contribute occasionally, there's a role for you here.
+                      just want to contribute occasionally, there's a role .
                     </p>
                   </Fade>
                 </div>

@@ -109,7 +109,7 @@ const BeAVolunteer = () => {
   };
 
   return (
-    <div className="bg-secondary-1 p-5 rounded-xl">
+    <div className="bg-secondary-1 p-5 rounded-xl bg-[url('https://i.ibb.co/3F3R84k/pexels-pluyar-2419041.jpg')] bg-blend-overlay bg-cover bg-center">
       <Helmet>
         <title>Be A Volunteer | ECO Volunteers</title>
       </Helmet>
@@ -204,7 +204,7 @@ const BeAVolunteer = () => {
             className="w-full rounded-md input"
           />
         </div>
-        <div className="col-span-2">
+        <div className="md:col-span-2">
           <label className="text-white" htmlFor="description">
             Description
           </label>
@@ -215,6 +215,7 @@ const BeAVolunteer = () => {
           ></textarea>
         </div>
       </form>
+
       <form>
         <h1 className="text-3xl text-center text-white underline font-semibold my-3">
           Your Info
