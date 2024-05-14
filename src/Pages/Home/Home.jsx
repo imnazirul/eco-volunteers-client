@@ -45,7 +45,6 @@ const Home = () => {
             <p className="text-sm md:text-lg text-center max-w-3xl mx-auto mt-3 mb-4 font-poppins">
               Urgent volunteer needs in your community. From event support to
               mentoring, discover opportunities to make an immediate impact.
-              Join us today and be part of the change.
             </p>
           </Fade>
         </div>
@@ -131,8 +130,7 @@ const Home = () => {
           <Fade fraction={0} direction="up" triggerOnce={true}>
             <p className="text-sm md:text-lg text-center max-w-3xl mx-auto mt-3 mb-4 font-poppins">
               Stay informed with our latest updates and news. Explore impactful
-              stories, volunteer spotlights, and upcoming events. Stay connected
-              and engaged with our community.
+              stories, volunteer spotlights, and upcoming events.
             </p>
           </Fade>
 
