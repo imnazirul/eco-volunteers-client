@@ -39,11 +39,13 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins       dark:text-[#ffffffCC]">
-                    Join Us in Building a Better Tomorrow!
-                  </h1>
+                  <Fade direction="left">
+                    <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins       dark:text-[#ffffffCC]">
+                      Join Us in Building a Better Tomorrow!
+                    </h1>
+                  </Fade>
 
-                  <Fade direction="up">
+                  <Fade direction="right">
                     <p className="md:mb-5 max-sm:text-sm font-poppins lg:text-lg dark:text-[#ffffffCC]">
                       Discover meaningful volunteer opportunities that align
                       with your passions and skills. Together, we can create
@@ -65,11 +67,13 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
-                    Empower Your Community Through Volunteerism!
-                  </h1>
+                  <Fade direction="left">
+                    <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
+                      Empower Your Community Through Volunteerism!
+                    </h1>
+                  </Fade>
 
-                  <Fade direction="up">
+                  <Fade direction="right">
                     <p className="md:mb-5 max-sm:text-sm font-poppins lg:text-lg dark:text-[#ffffffCC]">
                       Be a catalyst for change by volunteering with us. Whether
                       you're passionate about education, environmental
@@ -92,11 +96,13 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
-                    Make Memories, Make Friends, Make a Difference!
-                  </h1>
+                  <Fade direction="left">
+                    <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
+                      Make Memories, Make Friends, Make a Difference!
+                    </h1>
+                  </Fade>
 
-                  <Fade direction="up">
+                  <Fade direction="right">
                     <p className="md:mb-5 max-sm:text-sm font-poppins lg:text-lg dark:text-[#ffffffCC]">
                       Experience the joy of giving back while forging lifelong
                       connections. Learn how to serve and also chances to build
@@ -119,11 +125,13 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
-                    Be the Change You Want to See in the World!
-                  </h1>
+                  <Fade direction="left">
+                    <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
+                      Be the Change You Want to See in the World!
+                    </h1>
+                  </Fade>
 
-                  <Fade direction="up">
+                  <Fade direction="right">
                     <p className="md:mb-5 max-sm:text-sm font-poppins lg:text-lg dark:text-[#ffffffCC]">
                       Ready to turn your passion for change into action? Whether
                       you're a student looking to fulfill service hours, a
@@ -146,11 +154,12 @@ const BannerSlider = () => {
               <div className="hero-overlay bg-opacity-40"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl max-sm:space-y-1">
-                  {" "}
-                  <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
-                    Discover Your Purpose, Volunteer with Us!
-                  </h1>
-                  <Fade direction="up">
+                  <Fade direction="left">
+                    <h1 className="lg:mb-5 text-lg lg:text-4xl font-bold md:text-2xl font-poppins dark:text-[#ffffffCC]">
+                      Discover Your Purpose, Volunteer with Us!
+                    </h1>
+                  </Fade>
+                  <Fade direction="right">
                     {" "}
                     <p className="md:mb-5 max-sm:text-sm font-poppins lg:text-lg dark:text-[#ffffffCC]">
                       Uncover your potential and find fulfillment through
