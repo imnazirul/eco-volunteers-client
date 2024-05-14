@@ -58,8 +58,8 @@ const Register = () => {
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-jost font-bold text-center pt-5 lg:pt-10 text-btn-1 font-poppins">
         Register
       </h1>
-      <div className="hero md:px-2 py-5 lg:py-10 ">
-        <div className="card shrink-0 w-full max-w-md   md:border ">
+      <div className="hero px-2 py-5 lg:py-10 ">
+        <div className="card shrink-0 w-full max-w-md md:border ">
           <form onSubmit={handleSubmit(handleRegister)} className="card-body">
             <div className="form-control">
               <label className="label">

@@ -113,7 +113,7 @@ const Navbar = () => {
           </div>
           <div
             tabIndex={0}
-            className="menu menu-sm gap-4 dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 border border-btn-1 py-5 md:text-lg md:py-7 text-lg "
+            className="menu menu-sm gap-4 dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 border border-secondary-1 py-5 md:text-lg md:py-7 "
           >
             <span className="hover:text-[#3d52a0] ">
               <NavLink className="px-4 py-2 rounded-lg" to="/">
