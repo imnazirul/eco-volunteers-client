@@ -32,19 +32,23 @@ const BeAVolunteer = () => {
 
   if (isPending) {
     return (
-      <div className="flex flex-col gap-3 md:gap-6 border p-5 rounded-xl">
-        <div className="skeleton h-60 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <hr className="" />
-        <div className="skeleton h-8 w-20"></div>
+      <div className="flex flex-col gap-3 md:gap-8 border p-5 rounded-xl">
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-12 w-full"></div>
+        <div className="skeleton h-8 w-40 mx-auto"></div>
       </div>
     );
   }
   if (isError) {
     return (
-      <div className="max-w-96 mx-auto text-center h-[70vh] flex justify-center flex-col">
+      <div className="max-w-98 mx-auto text-center h-[70vh] flex justify-center flex-col">
         {" "}
         <h1 className="text-3xl">Data Not Found!</h1>
         <h3 className="text-xl">Refresh The Page or Try Again Later</h3>

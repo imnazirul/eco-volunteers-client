@@ -35,54 +35,14 @@ const MyRequestedPosts = () => {
   if (isPending) {
     return (
       <>
-        <div className="w-1/3 flex gap-2 my-5">
-          <div className="skeleton h-8 w-full"></div>
-          <div className="skeleton h-8 w-full"></div>
-        </div>
-        <div className="flex flex-col gap-5">
-          {" "}
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-            <div className="skeleton h-8 w-full"></div>
-          </div>
+        <div className="flex flex-col gap-4 w-full">
+          <div className="skeleton h-16 w-full"></div>
+          <div className="skeleton h-9 w-full"></div>
+          <div className="skeleton h-9 w-full"></div>
+          <div className="skeleton h-9 w-full"></div>
+          <div className="skeleton h-9 w-full"></div>
+          <div className="skeleton h-9 w-full"></div>
+          <div className="skeleton h-9 w-full"></div>
         </div>
       </>
     );

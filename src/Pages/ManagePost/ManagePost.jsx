@@ -1,24 +1,15 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../CustomHooks/useAuth";
-import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import { useState } from "react";
 import MyNeedPosts from "./MyNeedPosts";
 import MyRequestedPosts from "./MyRequestedPosts";
 import { Helmet } from "react-helmet-async";
 
 const ManagePost = () => {
   const [value, setValue] = React.useState(0);
-  const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
 
   function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;

@@ -33,12 +33,19 @@ const VolunteerNeedDetails = () => {
   if (isPending) {
     return (
       <div className="flex flex-col gap-3 md:gap-6 border p-5 rounded-xl">
-        <div className="skeleton h-60 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
+        <div className="flex flex-col lg:flex-row gap-5">
+          <div className="skeleton h-80 lg:h-96 w-full lg:w-3/5"></div>
+          <div className="flex flex-col gap-5 w-full lg:w-5/12 p-5">
+            <div className="skeleton h-6 w-14"></div>
+            <div className="skeleton h-6 w-40"></div>
+            <div className="skeleton h-6 w-40"></div>
+            <div className="skeleton h-12 w-full"></div>
+            <div className="skeleton h-10 w-full"></div>
+            <div className="skeleton h-8 w-52"></div>
+          </div>
+        </div>
         <hr className="" />
-        <div className="skeleton h-8 w-20"></div>
+        <div className="skeleton h-40 w-full"></div>
       </div>
     );
   }
@@ -71,11 +78,7 @@ const VolunteerNeedDetails = () => {
       </Helmet>
       <section className="bg-base-300">
         <div className="container max-w-6xl md:p-6 mx-auto space-y-6 sm:space-y-12">
-          <a
-            rel="noopener noreferrer"
-            href="#"
-            className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 bg-base-100"
-          >
+          <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group  lg:grid lg:grid-cols-12 bg-base-100">
             <img
               src={thumbnail}
               alt=""
@@ -123,7 +126,7 @@ const VolunteerNeedDetails = () => {
                 </button>
               </Link>
             </div>
-          </a>
+          </div>
         </div>
       </section>
 
