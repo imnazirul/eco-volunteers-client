@@ -13,6 +13,10 @@ const BeAVolunteer = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const [neededVolunteers, setNeededVolunteers] = useState();
+  const [deadlineTime, setDeadlineTime] = useState(0);
+  const [btnText, setBtnText] = useState("Request");
+
+  const deadline = new Date(deadlineTime).toDateString();
 
   const {
     data: singleData,
@@ -25,6 +29,7 @@ const BeAVolunteer = () => {
         .get(`/singlevpost/${id}?email=${user?.email}`)
         .then((res) => {
           setNeededVolunteers(res.data?.volunteers_needed);
+          setDeadlineTime(res.data?.deadline);
           return res.data;
         });
     },
@@ -64,12 +69,12 @@ const BeAVolunteer = () => {
     category,
     location,
     volunteers_needed,
-    deadline,
     organizer_name,
     organizer_email,
   } = singleData;
 
   const handleRequest = (e, id) => {
+    setBtnText(<span className="loading loading-spinner loading-sm"></span>);
     e.preventDefault();
 
     let suggestion = document.getElementById("suggestion").value;
@@ -90,7 +95,8 @@ const BeAVolunteer = () => {
     };
 
     if (neededVolunteers <= 0) {
-      return toast.error("All Volunteers Need Has Been FullFilled!");
+      setBtnText("Request");
+      return toast.error("All Volunteers Need Has Full Filled!");
     }
     axiosSecure
       .post(
@@ -99,16 +105,28 @@ const BeAVolunteer = () => {
       )
       .then((res) => {
         if (res.data.modifiedCount > 0) {
+          setBtnText("Request");
           const remainingNeed = neededVolunteers - 1;
           setNeededVolunteers(remainingNeed);
           Swal.fire({
             title: "Requested Successfully",
             showConfirmButton: true,
             confirmButtonText: "Ok",
-            confirmButtonColor: "#3d52a0",
+            confirmButtonColor: "#7091e6",
             icon: "success",
           });
         }
+      })
+      .catch(() => {
+        Swal.fire({
+          title: "Failed",
+          showConfirmButton: true,
+          confirmButtonText: "Ok",
+          confirmButtonColor: "#7091e6",
+          text: "Failed To Request Volunteer Post",
+          icon: "error",
+        });
+        setBtnText("Request");
       });
   };
 
@@ -214,6 +232,7 @@ const BeAVolunteer = () => {
           </label>
           <br />
           <textarea
+            readOnly
             defaultValue={description}
             className="textarea w-full textarea-bordered resize-none"
           ></textarea>
@@ -250,7 +269,7 @@ const BeAVolunteer = () => {
           </label>
           <input
             id="suggestion"
-            placeholder="suggestion"
+            placeholder="Add Some Suggestions..."
             className="w-full rounded-md input"
           />
         </div>
@@ -268,9 +287,9 @@ const BeAVolunteer = () => {
             onClick={(e) => {
               handleRequest(e, _id);
             }}
-            className="btn bg-primary-1 hover:bg-primary-1 text-lg text-white border-none px-10 rounded-3xl mx-auto"
+            className="btn bg-primary-1  hover:bg-primary-1 text-lg text-white border-none px-10 rounded-3xl mx-auto"
           >
-            Request
+            {btnText}
           </button>
         </div>
       </form>

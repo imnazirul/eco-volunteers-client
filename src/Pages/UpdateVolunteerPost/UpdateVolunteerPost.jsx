@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../CustomHooks/useAuth";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 
 const UpdateVolunteerPost = () => {
   const [categoryErr, setCategoryErr] = useState("");
@@ -15,6 +16,7 @@ const UpdateVolunteerPost = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState();
+  const [btnText, setBtnText] = useState("Update Post");
 
   const {
     data: postData,
@@ -33,7 +35,20 @@ const UpdateVolunteerPost = () => {
     },
   });
   if (isPending) {
-    return <h1 className="text-4xl text-center">Loading...</h1>;
+    return (
+      <div className="flex flex-col gap-3 md:gap-8 border p-5 rounded-xl">
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-12 w-full"></div>
+        <div className="skeleton h-8 w-40 mx-auto"></div>
+      </div>
+    );
   }
 
   const {
@@ -75,6 +90,7 @@ const UpdateVolunteerPost = () => {
 
     if (category === "Select Category Name") {
       setCategoryErr("Select Category Name !");
+
       return;
     }
     const updatedPost = {
@@ -98,17 +114,34 @@ const UpdateVolunteerPost = () => {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
+        setBtnText(
+          <span className="loading loading-spinner loading-md"></span>
+        );
         axiosSecure
           .put(`/volunteerposts?update=${id}&email=${user?.email}`, updatedPost)
           .then((res) => {
+            setBtnText("Update Post");
             if (res.data.modifiedCount > 0) {
               Swal.fire({
                 icon: "success",
                 title: "Your Changes has been saved",
                 showConfirmButton: true,
-                confirmButtonColor: "#3d52a0",
+                confirmButtonColor: "#7091e6",
               });
+            } else {
+              toast.error("Change Something To Update The Post");
             }
+          })
+          .catch(() => {
+            Swal.fire({
+              title: "Failed",
+              showConfirmButton: true,
+              confirmButtonText: "Ok",
+              confirmButtonColor: "#7091e6",
+              text: "Failed To Update Volunteer Post",
+              icon: "error",
+            });
+            setBtnText("Update Post");
           });
       }
     });
@@ -281,7 +314,7 @@ const UpdateVolunteerPost = () => {
         </div>
 
         <button className="btn w-64 max-w-64 rounded-3xl border-none mx-auto bg-primary-1 hover:bg-secondary-1 text-white font-poppins text-lg md:col-span-2">
-          Update Post
+          {btnText}
         </button>
       </form>
     </div>

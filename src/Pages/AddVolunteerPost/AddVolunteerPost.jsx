@@ -11,6 +11,7 @@ const AddVolunteerPost = () => {
   const { user } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
   const axiosSecure = useAxiosSecure();
+  const [btnText, setBtnText] = useState("Add Post");
 
   const handleErr = () => {
     const category = document.getElementById("dropdown").value;
@@ -23,6 +24,7 @@ const AddVolunteerPost = () => {
   };
 
   const handleAddPost = (e) => {
+    setBtnText(<span className="loading loading-spinner loading-md"></span>);
     e.preventDefault();
     const form = e.target;
 
@@ -59,14 +61,29 @@ const AddVolunteerPost = () => {
       .post(`/volunteerposts?email=${user?.email}`, newPost)
       .then((res) => {
         if (res.data.insertedId) {
+          form.reset();
           Swal.fire({
             title: "Added",
-            text: "Your Volunteer Post Has Been Added",
+            showConfirmButton: true,
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#7091e6",
+            text: "Volunteer Post Has Been Added",
             icon: "success",
           });
+          setBtnText("Add Post");
         }
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        Swal.fire({
+          title: "Failed",
+          showConfirmButton: true,
+          confirmButtonText: "Ok",
+          confirmButtonColor: "#7091e6",
+          text: "Failed To Add Volunteer Post",
+          icon: "error",
+        });
+        setBtnText("Add Post");
+      });
   };
   return (
     <div className="p-6 container font-poppins bg-cover bg-blend-overlay bg-[url('https://i.ibb.co/GnH7hr0/pexels-ann-h-45017-1762851.jpg')] bg-center bg-[#3d52a0] mx-auto rounded-lg">
@@ -229,7 +246,7 @@ const AddVolunteerPost = () => {
         </div>
 
         <button className="btn w-64 max-w-64 rounded-3xl border-none mx-auto  bg-primary-1 hover:bg-secondary-1 text-white font-poppins text-lg md:col-span-2">
-          Add Post
+          {btnText}
         </button>
       </form>
     </div>

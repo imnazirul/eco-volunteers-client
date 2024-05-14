@@ -79,10 +79,23 @@ const MyNeedPosts = () => {
               setVolunteerData(remaining);
               Swal.fire({
                 title: "Deleted!",
-                text: "Your file has been deleted.",
+                showConfirmButton: true,
+                confirmButtonText: "Ok",
+                confirmButtonColor: "#7091e6",
+                text: "Volunteer Post has been deleted.",
                 icon: "success",
               });
             }
+          })
+          .catch(() => {
+            Swal.fire({
+              title: "Failed!",
+              showConfirmButton: true,
+              confirmButtonText: "Ok",
+              confirmButtonColor: "#7091e6",
+              text: "Failed To Delete Volunteer Post.",
+              icon: "error",
+            });
           });
       }
     });

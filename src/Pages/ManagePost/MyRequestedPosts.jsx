@@ -71,24 +71,35 @@ const MyRequestedPosts = () => {
       confirmButtonColor: "#7091e6",
       cancelButtonColor: "#3d52a0",
       confirmButtonText: "Yes, Cancel it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure
-          .delete(`/requestedpost?cancelid=${id}&email=${user?.email}`)
-          .then((res) => {
-            if (res.data.deletedCount > 0) {
-              const remaining = requestedPosts.filter(
-                (data) => data._id !== id
-              );
-              setRequestedPosts(remaining);
-              Swal.fire({
-                title: "Cancelled Successfully!",
-                icon: "success",
-              });
-            }
-          });
-      }
-    });
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          axiosSecure
+            .delete(`/requestedpost?cancelid=${id}&email=${user?.email}`)
+            .then((res) => {
+              if (res.data.deletedCount > 0) {
+                const remaining = requestedPosts.filter(
+                  (data) => data._id !== id
+                );
+                setRequestedPosts(remaining);
+                Swal.fire({
+                  title: "Cancelled Successfully!",
+                  icon: "success",
+                });
+              }
+            });
+        }
+      })
+      .catch(() => {
+        Swal.fire({
+          title: "Failed!",
+          showConfirmButton: true,
+          confirmButtonText: "Ok",
+          confirmButtonColor: "#7091e6",
+          text: "Failed To Delete Volunteer Post.",
+          icon: "error",
+        });
+      });
   };
   return (
     <div>
