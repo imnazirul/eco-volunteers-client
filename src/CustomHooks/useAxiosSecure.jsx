@@ -5,12 +5,13 @@ import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "https://volunteer-management-server-nine.vercel.app/",
+  baseURL: "http://localhost:5000",
   withCredentials: true,
 });
 
 const useAxiosSecure = () => {
   const { logOut, loading } = useAuth();
+  console.log(logOut, loading);
 
   useEffect(() => {
     axiosSecure.interceptors.response.use(
@@ -18,6 +19,7 @@ const useAxiosSecure = () => {
         return res;
       },
       (error) => {
+        console.log(error);
         if (error.response.status === 401 || error.response.status === 403) {
           // console.log("logout the user");
 
