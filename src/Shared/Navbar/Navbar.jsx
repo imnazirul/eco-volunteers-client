@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import useAuth from "../../CustomHooks/useAuth";
 import { Tooltip } from "react-tooltip";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaDonate } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, loading, logOut } = useAuth();
@@ -60,6 +61,9 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink to="/manage_post">Manage My Post</NavLink>
+              </li>
+              <li>
+                <NavLink to="/donationHistory">Donation History</NavLink>
               </li>
             </ul>
           </div>
@@ -181,7 +185,6 @@ const Navbar = () => {
             {navLinks}
           </div>
         </div>
-
         <label className="swap ml-3 md:ml-8 swap-rotate">
           <input
             onChange={handleToggle}
@@ -207,8 +210,14 @@ const Navbar = () => {
             <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
           </svg>
         </label>
-        <div className="navbar-end flex md:gap-5 items-center">
+        <Link to="/donate">
           {" "}
+          <button className="btn ml-3 md:ml-5 max-sm:btn-sm bg-green-500 border-2 border-green-500 text-white hover:bg-white hover:text-green-500 hover:border-green-500">
+            <FaDonate className="text-xl"></FaDonate>
+            <span className="hidden md:flex">Donate</span>
+          </button>
+        </Link>{" "}
+        <div className="navbar-end flex md:gap-5 items-center">
           {loading ? (
             <>
               <span className="loading loading-spinner loading-md"></span>

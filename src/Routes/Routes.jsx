@@ -11,6 +11,8 @@ import ManagePost from "../Pages/ManagePost/ManagePost";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import UpdateVolunteerPost from "../Pages/UpdateVolunteerPost/UpdateVolunteerPost";
 import BeAVolunteer from "../Pages/BeAVolunteer.jsx/BeAVolunteer";
+import Donation from "../Pages/Donation/Donation";
+import DonationHistory from "../Pages/DonationHistory/DonationHistory";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +73,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <BeAVolunteer></BeAVolunteer>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/donate",
+        element: (
+          <PrivateRoute>
+            <Donation></Donation>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/donationHistory",
+        element: (
+          <PrivateRoute>
+            <DonationHistory></DonationHistory>
           </PrivateRoute>
         ),
       },
