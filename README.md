@@ -2,10 +2,8 @@
 
 # ECO Volunteers
 
-## Installation
+## Installation Guideline
 To get a local copy up and running, follow these steps.
-
-### Installation Guideline
 
 1. **Clone the repository:**
 
