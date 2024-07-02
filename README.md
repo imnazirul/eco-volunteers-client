@@ -1,6 +1,7 @@
 
 
 # ECO Volunteers
+**Live Site URL:** [www.ecovolunteers.com](https://volunteer-a11.web.app/)
 
 ## Installation Guideline
 To get a local copy up and running, follow these steps.
@@ -40,7 +41,7 @@ To get a local copy up and running, follow these steps.
 You can now view and work on the project locally.
 
 
-**Live Site URL:** [www.ecovolunteers.com](https://volunteer-a11.web.app/)
+
 
 ## Features and Characteristics:
 
